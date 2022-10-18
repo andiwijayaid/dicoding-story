@@ -25,6 +25,13 @@
         <item name="android:textSize">28sp</item>
     </style>
 
+    <style name="StoryTitle"
+        parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:fontFamily">@font/calibri</item>
+        <item name="android:textColor">@color/main_color</item>
+        <item name="android:textSize">64sp</item>
+    </style>
+
     <style name="userName">
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>

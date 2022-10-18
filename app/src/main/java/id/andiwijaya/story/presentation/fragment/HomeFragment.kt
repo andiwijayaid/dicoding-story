@@ -1,10 +1,11 @@
-package id.andiwijaya.story
+package id.andiwijaya.story.presentation.fragment
 
 import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import id.andiwijaya.story.R
 import id.andiwijaya.story.databinding.FragmentHomeBinding
 
 class HomeFragment: Fragment() {

@@ -1,4 +1,4 @@
-package id.andiwijaya.story
+package id.andiwijaya.story.presentation.fragment
 
 import androidx.fragment.app.Fragment
 
