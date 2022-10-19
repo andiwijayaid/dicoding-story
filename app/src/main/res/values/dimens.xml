@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="login_story_title_margin_top">64dp</dimen>
-    <dimen name="btn_generic_padding_vertical">16dp</dimen>
-    <dimen name="btn_generic_text_size">16sp</dimen>
+    <dimen name="btn_story_padding_vertical">16dp</dimen>
+    <dimen name="btn_story_text_size">16sp</dimen>
+    <dimen name="btn_story_progress_bar_elevation">2dp</dimen>
 </resources>

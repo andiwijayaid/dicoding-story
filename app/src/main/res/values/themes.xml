@@ -51,11 +51,11 @@
         parent="Widget.MaterialComponents.Button">
         <item name="shapeAppearance">@style/ShapeAppearance.Story.Button.Rounded</item>
         <item name="android:backgroundTint">@color/btn_generic_background_color</item>
-        <item name="android:paddingTop">@dimen/btn_generic_padding_vertical</item>
-        <item name="android:paddingBottom">@dimen/btn_generic_padding_vertical</item>
+        <item name="android:paddingTop">@dimen/btn_story_padding_vertical</item>
+        <item name="android:paddingBottom">@dimen/btn_story_padding_vertical</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">@dimen/btn_generic_text_size</item>
+        <item name="android:textSize">@dimen/btn_story_text_size</item>
     </style>
 
     <style name="ShapeAppearance.Story.Button.Rounded"

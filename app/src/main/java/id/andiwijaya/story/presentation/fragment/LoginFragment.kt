@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import id.andiwijaya.story.core.BaseFragment
 import id.andiwijaya.story.databinding.FragmentLoginBinding
@@ -22,14 +23,24 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         super.onViewCreated(view, savedInstanceState)
         btLogin.setOnClickListener {
+            Log.d("ASDCV", "Click")
             viewModel.login(etEmail.text, etPassword.text)
         }
+        tvRegister.setOnClickListener {
+            findNavController().navigate(LoginFragmentDirections.actionLoginToRegistration())
+        }
+        observeLogin()
+    }
 
+    private fun observeLogin() = with(binding) {
         observeDataFlow(viewModel.loginResult, onLoad = {
             Log.d("ASDCV", "Loading")
+            btLogin.isLoading(true)
         }, onError = {
+            btLogin.isLoading(false)
             Log.d("ASDCV", "Error")
         }) {
+            btLogin.isLoading(false)
             Log.d("ASDCV", "Success $it")
         }
     }
