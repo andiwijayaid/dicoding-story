@@ -1,4 +1,4 @@
-package id.andiwijaya.story.data.remote
+package id.andiwijaya.story.data.remote.api
 
 import id.andiwijaya.story.data.remote.dto.request.LoginRequest
 import id.andiwijaya.story.data.remote.dto.request.RegisterRequest

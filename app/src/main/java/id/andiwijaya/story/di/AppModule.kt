@@ -6,7 +6,10 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import id.andiwijaya.story.core.Constants.Network.BASE_URL
 import id.andiwijaya.story.data.remote.CommonHeaderInterceptor
-import id.andiwijaya.story.data.remote.StoryApi
+import id.andiwijaya.story.data.remote.api.StoryApi
+import id.andiwijaya.story.data.remote.service.StoryRemoteDataSource
+import id.andiwijaya.story.data.repository.LoginRepositoryImpl
+import id.andiwijaya.story.domain.repository.LoginRepository
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -38,5 +41,11 @@ object AppModule {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create(StoryApi::class.java)
+
+    @Singleton
+    @Provides
+    fun provideLoginRepository(remoteDataSource: StoryRemoteDataSource): LoginRepository {
+        return LoginRepositoryImpl(remoteDataSource)
+    }
 
 }
