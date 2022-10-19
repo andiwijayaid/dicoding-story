@@ -40,4 +40,10 @@
     <style name="description">
         <item name="android:textColor">@color/black</item>
     </style>
+
+    <style name="StoryTextInputLayout"
+        parent="Widget.Design.TextInputLayout">
+        <item name="colorControlActivated">@color/main_color</item>
+        <item name="hintTextColor">@color/main_color</item>
+    </style>
 </resources>

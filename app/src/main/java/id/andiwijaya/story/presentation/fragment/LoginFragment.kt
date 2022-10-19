@@ -22,10 +22,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         super.onViewCreated(view, savedInstanceState)
         btLogin.setOnClickListener {
-            viewModel.login(
-                etEmail.text.toString(),
-                etPassword.text.toString()
-            )
+            viewModel.login(etEmail.text, etPassword.text)
         }
 
         observeDataFlow(viewModel.loginResult, onLoad = {

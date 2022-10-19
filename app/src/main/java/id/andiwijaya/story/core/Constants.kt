@@ -8,4 +8,6 @@ object Constants {
         const val BEARER = "BEARER"
     }
 
+    const val ZERO = 0
+
 }
