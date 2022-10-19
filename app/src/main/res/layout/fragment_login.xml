@@ -21,9 +21,9 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="32dp"
+        android:inputType="textEmailAddress"
         app:hint="@string/email"
         app:iconSrc="@drawable/ic_email"
-        android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
@@ -34,13 +34,14 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="8dp"
+        android:inputType="textPassword"
         app:hint="@string/password"
         app:iconSrc="@drawable/ic_password"
-        android:inputType="textPassword"
         app:layout_constraintTop_toBottomOf="@id/et_email" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/bt_login"
+        style="@style/Story.Button.Primary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"

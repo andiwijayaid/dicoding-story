@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="main_color">#4267B2</color>
     <color name="grey">#738095</color>
+    <color name="color_button_pressed">#4267B2</color>
+    <color name="color_button_enable">#4267B2</color>
+    <color name="color_button_disable">#804267B2</color>
 </resources>
