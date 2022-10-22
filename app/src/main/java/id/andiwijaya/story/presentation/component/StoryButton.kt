@@ -3,6 +3,7 @@ package id.andiwijaya.story.presentation.component
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.inputmethod.InputMethodManager
 import androidx.constraintlayout.widget.ConstraintLayout
 import id.andiwijaya.story.R
 import id.andiwijaya.story.core.Constants.EMPTY_STRING
@@ -24,17 +25,28 @@ class StoryButton @JvmOverloads constructor(
     init {
         context.obtainStyledAttributes(attrs, R.styleable.StoryButton, defStyleArr, ZERO)
             .run {
-                setText(getString(R.styleable.StoryButton_android_text).orEmpty())
+                text = getString(R.styleable.StoryButton_android_text).orEmpty()
                 buttonText = binding.button.text.toString()
                 recycle()
             }
     }
 
-    private fun setText(text: String) {
-        binding.button.text = text
+    override fun setOnClickListener(l: OnClickListener?) {
+        binding.button.setOnClickListener {
+            (context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
+                .hideSoftInputFromWindow(windowToken, ZERO)
+            l?.onClick(this)
+        }
     }
 
+    var text: String
+        get() = binding.button.text.toString()
+        set(value) {
+            binding.button.text = value
+        }
+
     fun isLoading(state: Boolean) = with(binding) {
+        button.isEnabled = !state
         if (state) {
             button.text = EMPTY_STRING
             progressBar.show()
@@ -44,8 +56,8 @@ class StoryButton @JvmOverloads constructor(
         }
     }
 
-    override fun setOnClickListener(l: OnClickListener?) {
-        binding.button.setOnClickListener(l)
+    fun isEnabled(enable: Boolean) {
+        binding.button.isEnabled = enable
     }
 
 }

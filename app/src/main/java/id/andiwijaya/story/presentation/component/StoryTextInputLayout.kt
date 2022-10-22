@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.widget.addTextChangedListener
 import id.andiwijaya.story.R
 import id.andiwijaya.story.core.Constants.ZERO
 import id.andiwijaya.story.databinding.ComponentStoryTextInputLayoutBinding
@@ -27,13 +28,26 @@ class StoryTextInputLayout @JvmOverloads constructor(
                 setIcon(getResourceId(R.styleable.StoryTextInputLayout_iconSrc, ZERO))
                 setInputType(getInt(R.styleable.StoryTextInputLayout_android_inputType, ZERO))
                 setEditTextFocusChangeListener()
+                setEditTextChangedListener()
                 recycle()
             }
     }
 
+    fun getEditText() = binding.textInputEditText
+
+    fun setError(message: String?) {
+        binding.textInputLayout.error = message
+    }
+
     private fun setEditTextFocusChangeListener() = with(binding) {
-        binding.textInputEditText.setOnFocusChangeListener { _, hasFocus ->
+        textInputEditText.setOnFocusChangeListener { _, hasFocus ->
             ivTilIcon.setColorFilter(if (hasFocus) R.color.main_color else R.color.grey)
+        }
+    }
+
+    private fun setEditTextChangedListener() = with(binding) {
+        textInputEditText.addTextChangedListener {
+            textInputLayout.isErrorEnabled = false
         }
     }
 

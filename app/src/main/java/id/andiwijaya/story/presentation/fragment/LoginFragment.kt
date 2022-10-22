@@ -1,13 +1,17 @@
 package id.andiwijaya.story.presentation.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import id.andiwijaya.story.R
 import id.andiwijaya.story.core.BaseFragment
 import id.andiwijaya.story.databinding.FragmentLoginBinding
 import id.andiwijaya.story.presentation.viewmodel.LoginViewModel
@@ -23,25 +27,42 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         super.onViewCreated(view, savedInstanceState)
         btLogin.setOnClickListener {
-            Log.d("ASDCV", "Click")
-            viewModel.login(etEmail.text, etPassword.text)
+            viewModel.login()
         }
         tvRegister.setOnClickListener {
             findNavController().navigate(LoginFragmentDirections.actionLoginToRegistration())
         }
+        etEmail.getEditText().addTextChangedListener {
+            viewModel.email = it.toString()
+            validateForm()
+        }
+        etPassword.getEditText().addTextChangedListener {
+            viewModel.password = it.toString()
+            validateForm()
+        }
         observeLogin()
+        viewModel.isButtonEnable.observe(viewLifecycleOwner) {
+            btLogin.isEnabled(it)
+        }
+    }
+
+    private fun validateForm() = with(viewModel) {
+        if (email.isBlank() || password.isBlank()) {
+            isButtonEnable.postValue(false)
+        } else isButtonEnable.postValue(true)
     }
 
     private fun observeLogin() = with(binding) {
         observeDataFlow(viewModel.loginResult, onLoad = {
-            Log.d("ASDCV", "Loading")
             btLogin.isLoading(true)
         }, onError = {
             btLogin.isLoading(false)
-            Log.d("ASDCV", "Error")
+            when (it.code) {
+                401 -> etPassword.setError(context?.getString(R.string.wrong_email_or_password))
+                else -> showErrorDialog(it.message)
+            }
         }) {
             btLogin.isLoading(false)
-            Log.d("ASDCV", "Success $it")
         }
     }
 }

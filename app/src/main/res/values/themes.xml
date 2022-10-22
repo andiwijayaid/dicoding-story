@@ -64,4 +64,13 @@
         <item name="cornerSize">25%</item>
     </style>
 
+    <style name="TextBold">
+        <item name="android:textColor">@color/main_color</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ErrorTitleStyle" parent="TextBold">
+        <item name="android:textSize">18sp</item>
+    </style>
+
 </resources>

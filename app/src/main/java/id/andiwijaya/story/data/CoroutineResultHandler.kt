@@ -16,10 +16,10 @@ inline fun <A> resultFlow(
             response.data?.let {
                 saveCallResult(it)
                 emit(Result.Success(response.data))
-            } ?: emit(Result.Error(""))
+            } ?: emit(Result.Error(response.message.orEmpty(), null, response.code))
         }
         Status.ERROR -> {
-            emit(Result.Error(response.message.orEmpty()))
+            emit(Result.Error(response.message.orEmpty(), null, response.code))
         }
         Status.LOADING -> {}
     }

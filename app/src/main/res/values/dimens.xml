@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="zero_dp">0dp</dimen>
     <dimen name="login_story_title_margin_top">64dp</dimen>
+    <dimen name="login_email_edit_text_margin_horizontal">16dp</dimen>
+    <dimen name="login_email_edit_text_margin_bottom">32dp</dimen>
+    <dimen name="login_password_edit_text_margin_horizontal">16dp</dimen>
+    <dimen name="login_password_edit_text_margin_top">8dp</dimen>
+    <dimen name="login_button_margin_horizontal">16dp</dimen>
+    <dimen name="login_button_margin_top">12dp</dimen>
+    <dimen name="login_footer_margin_bottom">32dp</dimen>
+    <dimen name="login_register_margin_start">8dp</dimen>
     <dimen name="btn_story_padding_vertical">16dp</dimen>
     <dimen name="btn_story_text_size">16sp</dimen>
     <dimen name="btn_story_progress_bar_elevation">2dp</dimen>
+    <dimen name="error_dialog_padding_start">16dp</dimen>
+    <dimen name="error_dialog_padding_end">16dp</dimen>
+    <dimen name="error_dialog_padding_top">16dp</dimen>
+    <dimen name="error_dialog_padding_bottom">40dp</dimen>
+    <dimen name="error_dialog_close_button_padding">4dp</dimen>
+    <dimen name="error_dialog_icon_padding">4dp</dimen>
+    <dimen name="error_dialog_title_margin_top">4dp</dimen>
+    <dimen name="error_dialog_title_margin_start">4dp</dimen>
+    <dimen name="error_dialog_message_margin_start">20dp</dimen>
+    <dimen name="error_dialog_primary_button_margin_top">16dp</dimen>
 </resources>

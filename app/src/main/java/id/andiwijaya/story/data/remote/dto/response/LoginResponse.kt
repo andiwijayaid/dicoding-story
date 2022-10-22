@@ -6,9 +6,9 @@ import id.andiwijaya.story.domain.model.LoginResult
 data class LoginResponse(
     val error: Boolean,
     val message: String,
-    val loginResult: LoginResultDto
+    val loginResult: LoginResultDto? = null
 )
 
 fun LoginResponse.toLoginResult() = LoginResult(
-    error, message, loginResult.userId, loginResult.name, loginResult.token
+    error, message, loginResult?.userId.orEmpty(), loginResult?.name.orEmpty(), loginResult?.token.orEmpty()
 )

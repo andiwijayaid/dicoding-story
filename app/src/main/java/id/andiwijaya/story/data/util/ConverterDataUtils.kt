@@ -7,7 +7,7 @@ object ConverterDataUtils {
 
     inline fun <T, R> Result<T>.mapToDomain(mapper: T.() -> R): Result<R> = when (status) {
         Status.LOADING -> Result.Loading()
-        Status.ERROR -> Result.Error(message.orEmpty(), data?.mapper())
+        Status.ERROR -> Result.Error(message.orEmpty(), data?.mapper(), code)
         Status.SUCCESS -> {
             data?.mapper()?.let { Result.Success(it) } ?: Result.Error(
                 message.orEmpty(),

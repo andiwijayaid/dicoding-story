@@ -8,4 +8,8 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="wrong_email_or_password">Email or password is incorrect</string>
+    <string name="general_error_title">Something went wrong</string>
+    <string name="general_error_message">Please try it again later</string>
+    <string name="close">Close</string>
 </resources>
