@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import id.andiwijaya.story.R
 import id.andiwijaya.story.core.BaseFragment
@@ -48,6 +49,19 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
         }
         viewModel.isButtonEnable.observe(viewLifecycleOwner) {
             btRegister.isEnabled(it)
+        }
+        observeRegisterResult()
+    }
+
+    private fun observeRegisterResult() = with(binding) {
+        observeDataFlow(viewModel.registerResult, onLoad = {
+            btRegister.isLoading(true)
+        }, onError = {
+            btRegister.isLoading(false)
+            showErrorDialog(it.message)
+        }) {
+            btRegister.isLoading(false)
+            findNavController().navigateUp()
         }
     }
 

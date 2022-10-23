@@ -1,15 +1,23 @@
 package id.andiwijaya.story.presentation.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import id.andiwijaya.story.core.BaseViewModel
 import id.andiwijaya.story.core.Constants.EMPTY_STRING
+import id.andiwijaya.story.core.Result
+import id.andiwijaya.story.data.remote.dto.request.RegisterRequest
+import id.andiwijaya.story.domain.model.RegisterResult
+import id.andiwijaya.story.domain.usecase.post.RegisterUseCase
 import javax.inject.Inject
 
 @HiltViewModel
 class RegistrationViewModel @Inject constructor(
-
+    private val registerUseCase: RegisterUseCase
 ) : BaseViewModel() {
+
+    private val _registerResult = MutableLiveData<Result<RegisterResult>>()
+    val registerResult: LiveData<Result<RegisterResult>> = _registerResult
 
     val isButtonEnable = MutableLiveData(false)
     var name = EMPTY_STRING
@@ -23,8 +31,8 @@ class RegistrationViewModel @Inject constructor(
 
     fun isPasswordMatch() = password == confirmationPassword
 
-    fun register() {
-
-    }
+    fun register() = collectFlow(
+        registerUseCase(RegisterRequest(name, email, password)), _registerResult
+    )
 
 }
