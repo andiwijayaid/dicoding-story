@@ -23,6 +23,8 @@ class LoginViewModel @Inject constructor(
     var email = EMPTY_STRING
     var password = EMPTY_STRING
 
+    fun isAllFilled() = listOf(email, password).contains(EMPTY_STRING).not()
+
     fun login() = collectFlow(loginUseCase(LoginRequest(email, password)), _loginResult)
 
 }

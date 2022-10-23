@@ -43,11 +43,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         }
     }
 
-    private fun validateForm() = with(viewModel) {
-        if (email.isBlank() || password.isBlank()) {
-            isButtonEnable.postValue(false)
-        } else isButtonEnable.postValue(true)
-    }
+    private fun validateForm() = with(viewModel) { isButtonEnable.postValue(isAllFilled()) }
 
     private fun observeLogin() = with(binding) {
         observeDataFlow(viewModel.loginResult, onLoad = {
