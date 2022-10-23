@@ -1,87 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_story"
-        style="@style/StoryTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/login_story_title_margin_top"
-        android:text="@string/app_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/et_name"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="32dp"
-        android:hint="@string/name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/et_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="12dp"
-        android:hint="@string/email"
-        app:layout_constraintTop_toBottomOf="@id/et_name" />
+        <TextView
+            android:id="@+id/tv_story"
+            style="@style/StoryTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/login_story_title_margin_top"
+            android:text="@string/app_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/et_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="12dp"
-        android:hint="@string/password"
-        app:layout_constraintTop_toBottomOf="@id/et_email" />
+        <id.andiwijaya.story.presentation.component.StoryTextInputLayout
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/register_name_edit_text_margin_horizontal"
+            android:layout_marginTop="@dimen/login_email_edit_text_margin_bottom"
+            android:inputType="textPersonName"
+            app:hint="@string/name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
 
-    <EditText
-        android:id="@+id/et_confirm_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="12dp"
-        android:hint="@string/confirm_password"
-        app:layout_constraintTop_toBottomOf="@id/et_password" />
+        <id.andiwijaya.story.presentation.component.StoryTextInputLayout
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/register_email_edit_text_margin_horizontal"
+            android:layout_marginTop="@dimen/register_email_edit_text_margin_top"
+            android:inputType="textEmailAddress"
+            app:hint="@string/email"
+            app:layout_constraintTop_toBottomOf="@id/et_name" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="12dp"
-        android:text="@string/register"
-        app:layout_constraintTop_toBottomOf="@id/et_confirm_password" />
+        <id.andiwijaya.story.presentation.component.StoryTextInputLayout
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/register_password_edit_text_margin_horizontal"
+            android:layout_marginTop="@dimen/register_password_edit_text_margin_top"
+            android:inputType="textPassword"
+            app:hint="@string/password"
+            app:layout_constraintTop_toBottomOf="@id/et_email" />
 
-    <TextView
-        android:id="@+id/tv_already_have_an_account"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="@string/already_have_an_account"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tv_login"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent" />
+        <id.andiwijaya.story.presentation.component.StoryTextInputLayout
+            android:id="@+id/et_confirm_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/register_password_edit_text_margin_horizontal"
+            android:layout_marginTop="@dimen/register_password_edit_text_margin_top"
+            android:inputType="textPassword"
+            app:hint="@string/confirm_password"
+            app:layout_constraintTop_toBottomOf="@id/et_password" />
 
-    <TextView
-        android:id="@+id/tv_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="32dp"
-        android:text="@string/login"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_already_have_an_account" />
+        <id.andiwijaya.story.presentation.component.StoryButton
+            android:id="@+id/bt_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/register_button_margin_horizontal"
+            android:layout_marginTop="@dimen/register_button_margin_top"
+            android:text="@string/register"
+            app:layout_constraintTop_toBottomOf="@id/et_confirm_password" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
