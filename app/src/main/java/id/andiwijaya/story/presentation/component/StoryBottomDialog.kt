@@ -4,23 +4,27 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import id.andiwijaya.story.databinding.ComponentErrorDialogBinding
+import id.andiwijaya.story.core.util.orFalse
+import id.andiwijaya.story.databinding.ComponentStoryBottomDialogBinding
 
-class ErrorDialog(
+class StoryBottomDialog(
     private val title: String? = null,
     private val message: String? = null,
-    private val buttonText: String? = null
+    private val primaryButtonText: String? = null,
+    private val secondaryButtonText: String? = null,
+    private val showSecondaryButton: Boolean? = false
 ) : BottomSheetDialogFragment() {
 
     lateinit var onClickListener: OnButtonClickListener
-    lateinit var binding: ComponentErrorDialogBinding
+    lateinit var binding: ComponentStoryBottomDialogBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View = ComponentErrorDialogBinding.inflate(inflater, container, false).also {
+    ): View = ComponentStoryBottomDialogBinding.inflate(inflater, container, false).also {
         binding = it
     }.root
 
@@ -32,16 +36,24 @@ class ErrorDialog(
     private fun setContent() = with(binding) {
         tvErrorTitle.text = title?.takeIf { it.isNotBlank() } ?: tvErrorTitle.text
         tvErrorMessage.text = message?.takeIf { it.isNotBlank() } ?: tvErrorMessage.text
-        btPrimary.text = buttonText?.takeIf { it.isNotBlank() } ?: btPrimary.text
+        btPrimary.text = primaryButtonText?.takeIf { it.isNotBlank() } ?: btPrimary.text
+        btSecondary.text = secondaryButtonText?.takeIf { it.isNotBlank() } ?: btPrimary.text
         btPrimary.setOnClickListener {
             if (::onClickListener.isInitialized) {
-                onClickListener.onButtonClickedListener()
+                onClickListener.onPrimaryClickedListener()
+            }
+        }
+        btSecondary.isVisible = showSecondaryButton.orFalse()
+        btSecondary.setOnClickListener {
+            if (::onClickListener.isInitialized) {
+                onClickListener.onSecondaryClickedListener()
             }
         }
     }
 
     interface OnButtonClickListener {
-        fun onButtonClickedListener()
+        fun onPrimaryClickedListener()
+        fun onSecondaryClickedListener()
     }
 
 }

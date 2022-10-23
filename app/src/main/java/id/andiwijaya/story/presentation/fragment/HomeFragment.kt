@@ -28,8 +28,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 when (menuItem.itemId) {
                     R.id.logout -> {
-                        viewModel.logOut()
-                        findNavController().navigate(HomeFragmentDirections.actionHomeToLogin())
+                        showConfirmationDialog(
+                            getString(R.string.logout),
+                            getString(R.string.logout_confirmation),
+                            getString(R.string.logout)
+                        ) {
+                            viewModel.logOut()
+                            findNavController().navigate(HomeFragmentDirections.actionHomeToLogin())
+                        }
                     }
                     else -> {}
                 }

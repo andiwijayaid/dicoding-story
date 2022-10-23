@@ -14,4 +14,7 @@
     <string name="close">Close</string>
     <string name="add_story">Add Story</string>
     <string name="logout">Logout</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="agree">Agree</string>
+    <string name="logout_confirmation">Are you sure you want to logout?</string>
 </resources>

@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.viewbinding.ViewBinding
-import id.andiwijaya.story.presentation.component.ErrorDialog
+import id.andiwijaya.story.R
+import id.andiwijaya.story.presentation.component.StoryBottomDialog
 
 abstract class BaseFragment<T : ViewBinding> : Fragment() {
 
@@ -16,7 +17,7 @@ abstract class BaseFragment<T : ViewBinding> : Fragment() {
     }
 
     protected lateinit var binding: T
-    lateinit var errorDialog: ErrorDialog
+    lateinit var storyBottomDialog: StoryBottomDialog
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -59,13 +60,45 @@ abstract class BaseFragment<T : ViewBinding> : Fragment() {
         title: String? = null,
         buttonText: String? = null
     ) {
-        errorDialog = ErrorDialog(title, message, buttonText)
-        errorDialog.onClickListener = object : ErrorDialog.OnButtonClickListener {
-            override fun onButtonClickedListener() {
-                errorDialog.dismiss()
+        storyBottomDialog = StoryBottomDialog(
+            title ?: context?.getString(R.string.general_error_title),
+            message ?: context?.getString(R.string.general_error_message),
+            buttonText ?: context?.getString(R.string.close)
+        )
+        storyBottomDialog.onClickListener = object : StoryBottomDialog.OnButtonClickListener {
+            override fun onPrimaryClickedListener() {
+                storyBottomDialog.dismiss()
+            }
+
+            override fun onSecondaryClickedListener() {}
+        }
+        storyBottomDialog.show(childFragmentManager, TAG_ERROR)
+    }
+
+    fun showConfirmationDialog(
+        title: String? = null,
+        message: String? = null,
+        primaryButtonText: String? = null,
+        secondaryButtonText: String? = null,
+        primaryAction: (() -> Unit)? = null
+    ) {
+        storyBottomDialog = StoryBottomDialog(
+            title ?: context?.getString(R.string.general_error_title),
+            message ?: context?.getString(R.string.general_error_message),
+            primaryButtonText ?: context?.getString(R.string.agree),
+            secondaryButtonText ?: context?.getString(R.string.dismiss),
+            true
+        )
+        storyBottomDialog.onClickListener = object : StoryBottomDialog.OnButtonClickListener {
+            override fun onPrimaryClickedListener() {
+                primaryAction?.invoke() ?: storyBottomDialog.dismiss()
+            }
+
+            override fun onSecondaryClickedListener() {
+                storyBottomDialog.dismiss()
             }
         }
-        errorDialog.show(childFragmentManager, TAG_ERROR)
+        storyBottomDialog.show(childFragmentManager, TAG_ERROR)
     }
 
 }
