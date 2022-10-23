@@ -8,7 +8,7 @@ import id.andiwijaya.story.core.Constants.EMPTY_STRING
 import id.andiwijaya.story.core.Result
 import id.andiwijaya.story.data.remote.dto.request.LoginRequest
 import id.andiwijaya.story.domain.model.LoginResult
-import id.andiwijaya.story.domain.usecase.LoginUseCase
+import id.andiwijaya.story.domain.usecase.post.LoginUseCase
 import javax.inject.Inject
 
 @HiltViewModel

@@ -6,6 +6,7 @@ buildscript {
         retrofit_version = "2.9.0"
         okhttp_version = "4.10.0"
         coroutine_version = "1.6.4"
+        security_version = "1.0.0"
     }
 }
 

@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId "id.andiwijaya.story"
-        minSdk 21
+        minSdk 23
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -66,4 +66,7 @@ dependencies {
 
     // Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
+
+    // Secure Preferences
+    implementation "androidx.security:security-crypto:$security_version"
 }

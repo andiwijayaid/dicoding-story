@@ -1,34 +1,38 @@
 package id.andiwijaya.story.presentation.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.core.view.MenuProvider
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import id.andiwijaya.story.R
+import id.andiwijaya.story.core.BaseFragment
 import id.andiwijaya.story.databinding.FragmentHomeBinding
+import id.andiwijaya.story.presentation.viewmodel.HomeViewModel
 
-class HomeFragment: Fragment() {
+@AndroidEntryPoint
+class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
-    private lateinit var binding: FragmentHomeBinding
+    private val viewModel by viewModels<HomeViewModel>()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
+        FragmentHomeBinding.inflate(inflater, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.toolbar.addMenuProvider(object : MenuProvider{
+        binding.toolbar.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.menu_home, menu)
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                Log.d("Log", "TODO")
+                when (menuItem.itemId) {
+                    R.id.logout -> {
+                        viewModel.logOut()
+                        findNavController().navigate(HomeFragmentDirections.actionHomeToLogin())
+                    }
+                    else -> {}
+                }
                 return true
             }
         })

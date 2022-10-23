@@ -8,6 +8,11 @@ object Constants {
         const val BEARER = "BEARER"
     }
 
+    object Preference {
+        const val SECRET_PREFERENCE = "encrypted-story-preference"
+        const val PREF_KEY_TOKEN = "token"
+    }
+
     const val ZERO = 0
     const val EMPTY_STRING = ""
 

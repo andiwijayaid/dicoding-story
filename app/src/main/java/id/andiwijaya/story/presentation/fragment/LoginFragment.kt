@@ -1,12 +1,9 @@
 package id.andiwijaya.story.presentation.fragment
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -63,6 +60,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             }
         }) {
             btLogin.isLoading(false)
+            findNavController().navigate(LoginFragmentDirections.actionLoginToHome())
         }
     }
 }

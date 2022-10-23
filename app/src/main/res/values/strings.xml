@@ -12,4 +12,6 @@
     <string name="general_error_title">Something went wrong</string>
     <string name="general_error_message">Please try it again later</string>
     <string name="close">Close</string>
+    <string name="add_story">Add Story</string>
+    <string name="logout">Logout</string>
 </resources>

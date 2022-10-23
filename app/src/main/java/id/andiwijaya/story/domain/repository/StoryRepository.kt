@@ -5,6 +5,8 @@ import id.andiwijaya.story.data.remote.dto.request.LoginRequest
 import id.andiwijaya.story.domain.model.LoginResult
 import kotlinx.coroutines.flow.Flow
 
-interface LoginRepository {
+interface StoryRepository {
     fun login(request: LoginRequest): Flow<Result<LoginResult>>
+    fun loadToken(): String
+    fun removeToken()
 }
