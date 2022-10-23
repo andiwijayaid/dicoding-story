@@ -18,4 +18,6 @@
     <string name="agree">Agree</string>
     <string name="logout_confirmation">Are you sure you want to logout?</string>
     <string name="password_is_not_match">Password is not match</string>
+    <string name="registration_success">Registration Successful</string>
+    <string name="registration_success_desc">Your account has been created successfully. You can login now.</string>
 </resources>

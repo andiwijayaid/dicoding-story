@@ -57,11 +57,10 @@ abstract class BaseFragment<T : ViewBinding> : Fragment() {
 
     fun showErrorDialog(
         message: String? = null,
-        title: String? = null,
         buttonText: String? = null
     ) {
         storyBottomDialog = StoryBottomDialog(
-            title ?: context?.getString(R.string.general_error_title),
+            context?.getString(R.string.general_error_title),
             message ?: context?.getString(R.string.general_error_message),
             buttonText ?: context?.getString(R.string.close)
         )
@@ -70,7 +69,25 @@ abstract class BaseFragment<T : ViewBinding> : Fragment() {
                 storyBottomDialog.dismiss()
             }
 
-            override fun onSecondaryClickedListener() {}
+            override fun onSecondaryClickedListener() = Unit
+        }
+        storyBottomDialog.show(childFragmentManager, TAG_ERROR)
+    }
+
+    fun showBottomDialog(
+        title: String,
+        message: String,
+        primaryButtonText: String,
+        icon: Int? = null,
+        buttonAction: () -> Unit
+    ) {
+        storyBottomDialog = StoryBottomDialog(title, message, primaryButtonText, icon = icon)
+        storyBottomDialog.onClickListener = object : StoryBottomDialog.OnButtonClickListener {
+            override fun onPrimaryClickedListener() {
+                buttonAction.invoke()
+            }
+
+            override fun onSecondaryClickedListener() = Unit
         }
         storyBottomDialog.show(childFragmentManager, TAG_ERROR)
     }

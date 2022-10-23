@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/iv_error"
+        android:id="@+id/iv_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/error_dialog_icon_padding"
@@ -36,8 +36,8 @@
         android:layout_marginTop="@dimen/error_dialog_title_margin_top"
         android:text="@string/general_error_title"
         app:layout_constraintEnd_toStartOf="@id/iv_close"
-        app:layout_constraintStart_toEndOf="@id/iv_error"
-        app:layout_constraintTop_toTopOf="@id/iv_error" />
+        app:layout_constraintStart_toEndOf="@id/iv_icon"
+        app:layout_constraintTop_toTopOf="@id/iv_icon" />
 
     <TextView
         android:id="@+id/tv_error_message"

@@ -61,7 +61,12 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
             showErrorDialog(it.message)
         }) {
             btRegister.isLoading(false)
-            findNavController().navigateUp()
+            showBottomDialog(
+                context?.getString(R.string.registration_success).orEmpty(),
+                context?.getString(R.string.registration_success_desc).orEmpty(),
+                context?.getString(R.string.login).orEmpty(),
+                R.drawable.ic_successful
+            ) { findNavController().navigateUp() }
         }
     }
 

@@ -14,7 +14,8 @@ class StoryBottomDialog(
     private val message: String? = null,
     private val primaryButtonText: String? = null,
     private val secondaryButtonText: String? = null,
-    private val showSecondaryButton: Boolean? = false
+    private val showSecondaryButton: Boolean? = false,
+    private val icon: Int? = null
 ) : BottomSheetDialogFragment() {
 
     lateinit var onClickListener: OnButtonClickListener
@@ -34,20 +35,17 @@ class StoryBottomDialog(
     }
 
     private fun setContent() = with(binding) {
+        icon?.let { ivIcon.setImageResource(it) }
         tvErrorTitle.text = title?.takeIf { it.isNotBlank() } ?: tvErrorTitle.text
         tvErrorMessage.text = message?.takeIf { it.isNotBlank() } ?: tvErrorMessage.text
         btPrimary.text = primaryButtonText?.takeIf { it.isNotBlank() } ?: btPrimary.text
         btSecondary.text = secondaryButtonText?.takeIf { it.isNotBlank() } ?: btPrimary.text
         btPrimary.setOnClickListener {
-            if (::onClickListener.isInitialized) {
-                onClickListener.onPrimaryClickedListener()
-            }
+            if (::onClickListener.isInitialized) onClickListener.onPrimaryClickedListener()
         }
         btSecondary.isVisible = showSecondaryButton.orFalse()
         btSecondary.setOnClickListener {
-            if (::onClickListener.isInitialized) {
-                onClickListener.onSecondaryClickedListener()
-            }
+            if (::onClickListener.isInitialized) onClickListener.onSecondaryClickedListener()
         }
     }
 
