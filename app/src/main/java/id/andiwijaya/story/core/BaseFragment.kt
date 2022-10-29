@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import id.andiwijaya.story.R
 import id.andiwijaya.story.presentation.component.StoryBottomDialog
@@ -25,7 +27,6 @@ abstract class BaseFragment<T : ViewBinding> : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = initBinding(inflater, container)
-
         return binding.root
     }
 
@@ -51,6 +52,23 @@ abstract class BaseFragment<T : ViewBinding> : Fragment() {
                     )
                     Status.SUCCESS -> it.data?.let { data -> onSuccess?.invoke(data) }
                 }
+            }
+        }
+    }
+
+    protected fun observeNavigation(viewModel: BaseViewModel) = with(viewModel) {
+        navigation.observe(viewLifecycleOwner) {
+            when (it) {
+                is NavigationCommand.Pop -> {
+                    findNavController().navigate(
+                        it.directions,
+                        NavOptions.Builder().apply {
+                            setPopUpTo(R.id.nav_graph, true)
+                            setLaunchSingleTop(true)
+                        }.build()
+                    )
+                }
+                is NavigationCommand.GoTo -> findNavController().navigate(it.directions)
             }
         }
     }

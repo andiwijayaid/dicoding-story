@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.*
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import id.andiwijaya.story.R
 import id.andiwijaya.story.core.BaseFragment
@@ -20,6 +19,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         FragmentHomeBinding.inflate(inflater, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        observeNavigation(viewModel)
         binding.toolbar.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.menu_home, menu)
@@ -34,7 +34,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                             getString(R.string.logout)
                         ) {
                             viewModel.logOut()
-                            findNavController().navigate(HomeFragmentDirections.actionHomeToLogin())
                         }
                     }
                     else -> {}

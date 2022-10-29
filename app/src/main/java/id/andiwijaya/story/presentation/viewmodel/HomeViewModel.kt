@@ -3,6 +3,7 @@ package id.andiwijaya.story.presentation.viewmodel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import id.andiwijaya.story.core.BaseViewModel
 import id.andiwijaya.story.domain.usecase.remove.RemoveTokenUseCase
+import id.andiwijaya.story.presentation.fragment.HomeFragmentDirections
 import javax.inject.Inject
 
 @HiltViewModel
@@ -12,6 +13,7 @@ class HomeViewModel @Inject constructor(
 
     fun logOut() {
         removeTokenUseCase.invoke()
+        pop(HomeFragmentDirections.actionHomeToLogin())
     }
 
 }
