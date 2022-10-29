@@ -32,6 +32,11 @@ object AppModule {
 
     @Provides
     @Singleton
+    fun provideCommonHeaderInterceptor(securePrefManager: SecurePrefManager) =
+        CommonHeaderInterceptor(securePrefManager)
+
+    @Provides
+    @Singleton
     fun provideOkHttpClient(
         okHttpClientBuilder: OkHttpClient.Builder,
         commonHeader: CommonHeaderInterceptor
@@ -43,9 +48,12 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideStoryApiService(): StoryApi = Retrofit.Builder()
+    fun provideStoryApiService(
+        okHttpClient: OkHttpClient
+    ): StoryApi = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
+        .client(okHttpClient)
         .build()
         .create(StoryApi::class.java)
 
