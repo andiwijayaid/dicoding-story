@@ -4,8 +4,10 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.postOnAnimationDelayed
 import androidx.core.widget.addTextChangedListener
 import id.andiwijaya.story.R
+import id.andiwijaya.story.core.Constants.MIN_CHAR_ERROR_DELAY_IN_MILLIS
 import id.andiwijaya.story.core.Constants.ZERO
 import id.andiwijaya.story.databinding.ComponentStoryTextInputLayoutBinding
 import id.andiwijaya.story.presentation.hide
@@ -16,6 +18,8 @@ class StoryTextInputLayout @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleArr: Int = 0
 ) : ConstraintLayout(context, attrs, defStyleArr) {
+
+    private var minChar = ZERO
 
     private val binding: ComponentStoryTextInputLayoutBinding =
         ComponentStoryTextInputLayoutBinding.inflate(LayoutInflater.from(context), this, true)
@@ -29,8 +33,13 @@ class StoryTextInputLayout @JvmOverloads constructor(
                 setInputType(getInt(R.styleable.StoryTextInputLayout_android_inputType, ZERO))
                 setEditTextFocusChangeListener()
                 setEditTextChangedListener()
+                setEditTextMinChar(getInt(R.styleable.StoryTextInputLayout_minChar, ZERO))
                 recycle()
             }
+    }
+
+    private fun setEditTextMinChar(minChar: Int) {
+        this.minChar = minChar
     }
 
     fun getEditText() = binding.textInputEditText
@@ -48,6 +57,12 @@ class StoryTextInputLayout @JvmOverloads constructor(
     private fun setEditTextChangedListener() = with(binding) {
         textInputEditText.addTextChangedListener {
             textInputLayout.isErrorEnabled = false
+            postOnAnimationDelayed(MIN_CHAR_ERROR_DELAY_IN_MILLIS) {
+                binding.textInputEditText.error =
+                    if (text.length < minChar && text.length != ZERO) {
+                        context.getString(R.string.min_n_char, minChar)
+                    } else null
+            }
         }
     }
 

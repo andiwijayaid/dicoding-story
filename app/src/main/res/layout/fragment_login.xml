@@ -37,7 +37,8 @@
         android:inputType="textPassword"
         app:hint="@string/password"
         app:iconSrc="@drawable/ic_password"
-        app:layout_constraintTop_toBottomOf="@id/et_email" />
+        app:layout_constraintTop_toBottomOf="@id/et_email"
+        app:minChar="6" />
 
     <id.andiwijaya.story.presentation.component.StoryButton
         android:id="@+id/bt_login"

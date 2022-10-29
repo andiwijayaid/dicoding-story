@@ -15,5 +15,6 @@ object Constants {
 
     const val ZERO = 0
     const val EMPTY_STRING = ""
+    const val MIN_CHAR_ERROR_DELAY_IN_MILLIS = 1500L
 
 }

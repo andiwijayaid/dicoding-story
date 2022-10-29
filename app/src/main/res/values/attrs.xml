@@ -9,6 +9,8 @@
         <attr name="iconSrc"
             format="reference" />
         <attr name="android:inputType" />
+        <attr name="minChar"
+            format="integer" />
     </declare-styleable>
 
     <declare-styleable name="StoryButton">
