@@ -1,5 +1,6 @@
 package id.andiwijaya.story.data.remote.api
 
+import id.andiwijaya.story.core.Constants.ZERO
 import id.andiwijaya.story.data.remote.dto.request.LoginRequest
 import id.andiwijaya.story.data.remote.dto.request.RegisterRequest
 import id.andiwijaya.story.data.remote.dto.response.GetStoriesResponse
@@ -23,7 +24,7 @@ interface StoryApi {
     suspend fun getStories(
         @Query("page") page: Int,
         @Query("size") size: Int,
-        @Query("location") location: Int
+        @Query("location") location: Int? = ZERO
     ): Response<GetStoriesResponse>
 
 }

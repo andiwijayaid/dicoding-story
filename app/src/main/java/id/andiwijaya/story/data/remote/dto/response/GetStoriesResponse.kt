@@ -1,17 +1,17 @@
 package id.andiwijaya.story.data.remote.dto.response
 
+import id.andiwijaya.story.data.remote.dto.model.ListStoryDto
+import id.andiwijaya.story.domain.model.ListStory
+import id.andiwijaya.story.domain.model.Story
+
 data class GetStoriesResponse(
     val error: Boolean,
     val message: String,
-    val listStory: ListStory
+    val listStory: List<ListStoryDto>
 )
 
-data class ListStory(
-    val id: String,
-    val name: String,
-    val description: String,
-    val photoUrl: String,
-    val createdAt: String,
-    val lat: Double,
-    val lon: Double
+fun GetStoriesResponse.toListStory() = ListStory(
+    error = error, message = message, stories = listStory.map {
+        Story(it.id, it.name, it.description, it.photoUrl, it.photoUrl, it.lat, it.lon)
+    }
 )
