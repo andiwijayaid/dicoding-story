@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavOptions
@@ -18,6 +19,7 @@ abstract class BaseFragment<T : ViewBinding> : Fragment() {
         const val TAG_ERROR = "error"
     }
 
+    private lateinit var onBackPressedCallback: OnBackPressedCallback
     protected lateinit var binding: T
     lateinit var storyBottomDialog: StoryBottomDialog
 
@@ -134,6 +136,26 @@ abstract class BaseFragment<T : ViewBinding> : Fragment() {
             }
         }
         storyBottomDialog.show(childFragmentManager, TAG_ERROR)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (::onBackPressedCallback.isInitialized) activity?.onBackPressedDispatcher?.addCallback(
+            onBackPressedCallback
+        )
+    }
+
+    override fun onStop() {
+        if (::onBackPressedCallback.isInitialized) onBackPressedCallback.remove()
+        super.onStop()
+    }
+
+    fun setupBackPressCallback(onBackPressed: () -> Unit) {
+        onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                onBackPressed.invoke()
+            }
+        }
     }
 
 }

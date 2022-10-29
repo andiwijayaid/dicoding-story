@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import id.andiwijaya.story.R
 import id.andiwijaya.story.core.BaseFragment
@@ -23,6 +22,8 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         super.onViewCreated(view, savedInstanceState)
+        observeNavigation(viewModel)
+        setupBackPressCallback { viewModel.navigateToLogin() }
         etName.getEditText().addTextChangedListener {
             viewModel.name = it.toString()
             validateForm()
@@ -66,7 +67,7 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
                 context?.getString(R.string.registration_success_desc).orEmpty(),
                 context?.getString(R.string.login).orEmpty(),
                 R.drawable.ic_successful
-            ) { findNavController().navigateUp() }
+            ) { viewModel.navigateToLogin() }
         }
     }
 

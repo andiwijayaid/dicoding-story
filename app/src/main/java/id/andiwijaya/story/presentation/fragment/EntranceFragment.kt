@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavDirections
-import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import id.andiwijaya.story.core.BaseFragment
 import id.andiwijaya.story.databinding.FragmentEntranceBinding
@@ -20,17 +19,18 @@ class EntranceFragment : BaseFragment<FragmentEntranceBinding>() {
     override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
         FragmentEntranceBinding.inflate(inflater, container, false)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(viewModel) {
         super.onViewCreated(view, savedInstanceState)
+        observeNavigation(this)
         val action: NavDirections = when {
-            viewModel.isTokenBlank() -> {
+            isTokenBlank() -> {
                 EntranceFragmentDirections.actionToLogin()
             }
             else -> {
                 EntranceFragmentDirections.actionToHome()
             }
         }
-        this.findNavController().navigate(action)
+        navigate(action)
     }
 
 }

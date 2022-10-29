@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import id.andiwijaya.story.R
 import id.andiwijaya.story.core.BaseFragment
@@ -23,11 +22,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         super.onViewCreated(view, savedInstanceState)
+        observeNavigation(viewModel)
         btLogin.setOnClickListener {
             viewModel.login()
         }
         tvRegister.setOnClickListener {
-            findNavController().navigate(LoginFragmentDirections.actionLoginToRegistration())
+            viewModel.navigateToRegistration()
         }
         etEmail.getEditText().addTextChangedListener {
             viewModel.email = it.toString()
@@ -56,7 +56,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             }
         }) {
             btLogin.isLoading(false)
-            findNavController().navigate(LoginFragmentDirections.actionLoginToHome())
+            viewModel.navigateToHome()
         }
     }
 }
