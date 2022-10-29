@@ -23,7 +23,7 @@ class StoryRemoteDataSource @Inject constructor(
     }
 
     suspend fun getStories(
-        page: Int, size: Int, location: Int? = null
+        page: Int, size: Int? = null, location: Int? = null
     ): Result<GetStoriesResponse> {
         return getResultWithSingleObject { api.getStories(page, size, location) }
     }

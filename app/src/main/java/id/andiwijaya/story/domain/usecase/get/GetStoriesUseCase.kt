@@ -6,7 +6,6 @@ import javax.inject.Inject
 class GetStoriesUseCase @Inject constructor(
     private val repository: StoryRepository
 ) {
-    operator fun invoke(page: Int, size: Int, location: Int? = null) = repository.getStories(
-        page, size, location
-    )
+    operator fun invoke(page: Int, size: Int? = null, location: Int? = null) =
+        repository.getStories(page, size, location)
 }

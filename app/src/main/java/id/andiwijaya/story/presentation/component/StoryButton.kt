@@ -9,8 +9,8 @@ import id.andiwijaya.story.R
 import id.andiwijaya.story.core.Constants.EMPTY_STRING
 import id.andiwijaya.story.core.Constants.ZERO
 import id.andiwijaya.story.databinding.ComponentStoryButtonBinding
-import id.andiwijaya.story.presentation.hide
-import id.andiwijaya.story.presentation.show
+import id.andiwijaya.story.presentation.util.hide
+import id.andiwijaya.story.presentation.util.show
 
 class StoryButton @JvmOverloads constructor(
     context: Context,

@@ -1,19 +1,21 @@
 package id.andiwijaya.story.data.repository
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import id.andiwijaya.story.core.Constants.DEFAULT_PAGE_SIZE
 import id.andiwijaya.story.core.Result
 import id.andiwijaya.story.data.local.StoryLocalDataSource
 import id.andiwijaya.story.data.remote.dto.request.LoginRequest
 import id.andiwijaya.story.data.remote.dto.request.RegisterRequest
-import id.andiwijaya.story.data.remote.dto.response.toListStory
 import id.andiwijaya.story.data.remote.dto.response.toLoginResult
 import id.andiwijaya.story.data.remote.dto.response.toRegisterResult
 import id.andiwijaya.story.data.remote.service.StoryRemoteDataSource
 import id.andiwijaya.story.data.resultFlow
 import id.andiwijaya.story.data.util.ConverterDataUtils.mapToDomain
-import id.andiwijaya.story.domain.model.ListStory
 import id.andiwijaya.story.domain.model.LoginResult
 import id.andiwijaya.story.domain.model.RegisterResult
 import id.andiwijaya.story.domain.repository.StoryRepository
+import id.andiwijaya.story.data.remote.service.StoryPagingSource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -34,13 +36,10 @@ class StoryRepositoryImpl @Inject constructor(
         saveCallResult = {}
     )
 
-    override fun getStories(page: Int, size: Int, location: Int?): Flow<Result<ListStory>> =
-        resultFlow(
-            networkCall = {
-                remoteDataSource.getStories(page, size, location).mapToDomain { toListStory() }
-            },
-            saveCallResult = {}
-        )
+    override fun getStories(page: Int, size: Int?, location: Int?) = Pager(
+        pagingSourceFactory = { StoryPagingSource(remoteDataSource) },
+        config = PagingConfig(pageSize = DEFAULT_PAGE_SIZE)
+    ).flow
 
     override fun loadToken(): String = localDataSource.loadToken()
 

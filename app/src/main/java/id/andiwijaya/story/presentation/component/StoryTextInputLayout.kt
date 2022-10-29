@@ -10,8 +10,8 @@ import id.andiwijaya.story.R
 import id.andiwijaya.story.core.Constants.MIN_CHAR_ERROR_DELAY_IN_MILLIS
 import id.andiwijaya.story.core.Constants.ZERO
 import id.andiwijaya.story.databinding.ComponentStoryTextInputLayoutBinding
-import id.andiwijaya.story.presentation.hide
-import id.andiwijaya.story.presentation.show
+import id.andiwijaya.story.presentation.util.hide
+import id.andiwijaya.story.presentation.util.show
 
 class StoryTextInputLayout @JvmOverloads constructor(
     context: Context,

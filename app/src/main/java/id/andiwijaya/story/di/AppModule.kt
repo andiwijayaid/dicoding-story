@@ -59,6 +59,15 @@ object AppModule {
 
     @Singleton
     @Provides
+    fun provideStoryLocalDataSource(securePrefManager: SecurePrefManager) =
+        StoryLocalDataSource(securePrefManager)
+
+    @Singleton
+    @Provides
+    fun provideStoryRemoteDataSource(api: StoryApi) = StoryRemoteDataSource(api)
+
+    @Singleton
+    @Provides
     fun provideStoryRepository(
         remoteDataSource: StoryRemoteDataSource,
         localDataSource: StoryLocalDataSource

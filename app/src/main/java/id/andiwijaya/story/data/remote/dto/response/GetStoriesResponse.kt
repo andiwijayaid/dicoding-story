@@ -12,6 +12,6 @@ data class GetStoriesResponse(
 
 fun GetStoriesResponse.toListStory() = ListStory(
     error = error, message = message, stories = listStory.map {
-        Story(it.id, it.name, it.description, it.photoUrl, it.photoUrl, it.lat, it.lon)
+        Story(it.id, it.name, it.description, it.photoUrl, it.createdAt, it.lat, it.lon)
     }
 )

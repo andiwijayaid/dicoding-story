@@ -1,4 +1,4 @@
-package id.andiwijaya.story.presentation
+package id.andiwijaya.story.presentation.util
 
 import android.view.View
 

@@ -1,5 +1,6 @@
 package id.andiwijaya.story.data.remote.api
 
+import id.andiwijaya.story.core.Constants.DEFAULT_PAGE_SIZE
 import id.andiwijaya.story.core.Constants.ZERO
 import id.andiwijaya.story.data.remote.dto.request.LoginRequest
 import id.andiwijaya.story.data.remote.dto.request.RegisterRequest
@@ -23,7 +24,7 @@ interface StoryApi {
     @GET("stories")
     suspend fun getStories(
         @Query("page") page: Int,
-        @Query("size") size: Int,
+        @Query("size") size: Int? = DEFAULT_PAGE_SIZE,
         @Query("location") location: Int? = ZERO
     ): Response<GetStoriesResponse>
 

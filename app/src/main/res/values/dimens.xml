@@ -30,4 +30,5 @@
     <dimen name="register_password_edit_text_margin_top">8dp</dimen>
     <dimen name="register_button_margin_horizontal">16dp</dimen>
     <dimen name="register_button_margin_top">8dp</dimen>
+    <dimen name="item_story_load_footer_progress_bar_elevation">2dp</dimen>
 </resources>

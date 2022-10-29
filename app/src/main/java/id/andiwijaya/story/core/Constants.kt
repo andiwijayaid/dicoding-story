@@ -14,7 +14,9 @@ object Constants {
     }
 
     const val ZERO = 0
+    const val ONE = 1
     const val EMPTY_STRING = ""
     const val MIN_CHAR_ERROR_DELAY_IN_MILLIS = 1500L
+    const val DEFAULT_PAGE_SIZE = 20
 
 }
