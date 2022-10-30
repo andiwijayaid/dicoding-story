@@ -5,6 +5,7 @@ import android.view.*
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import id.andiwijaya.story.R
@@ -26,18 +27,25 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
         FragmentHomeBinding.inflate(inflater, container, false)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         observeNavigation(viewModel)
         viewModel.getStories(ONE)
-        binding.rvStory.adapter = adapter.withLoadStateFooter(
+        rvStory.addItemDecoration(
+            DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+        )
+        rvStory.adapter = adapter.withLoadStateFooter(
             footer = StoryLoadStateAdapter {
                 viewModel.getStories(ONE)
             }
         )
-        binding.rvStory.layoutManager = LinearLayoutManager(context)
+        rvStory.layoutManager = LinearLayoutManager(context)
         viewModel.stories.observe(viewLifecycleOwner) {
             lifecycleScope.launch { adapter.submitData(it) }
         }
+        setupToolbar()
+    }
+
+    private fun setupToolbar() {
         binding.toolbar.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.menu_home, menu)

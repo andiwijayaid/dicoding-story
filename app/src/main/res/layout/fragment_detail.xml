@@ -57,7 +57,7 @@
         android:id="@+id/clg_story_detail_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="visible"
+        android:visibility="gone"
         app:constraint_referenced_ids="tv_name, tv_time, iv_story, tv_description" />
 
     <ProgressBar
