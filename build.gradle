@@ -9,6 +9,7 @@ buildscript {
         security_version = "1.0.0"
         paging_version = "3.1.1"
         glide_version = "4.14.2"
+        three_ten_abp_version = "1.4.2"
     }
 }
 

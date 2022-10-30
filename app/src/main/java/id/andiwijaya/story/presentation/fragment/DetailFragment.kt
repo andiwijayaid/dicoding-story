@@ -10,6 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.andiwijaya.story.core.BaseFragment
 import id.andiwijaya.story.core.Constants.Argument.ARG_KEY_ID
 import id.andiwijaya.story.core.Constants.EMPTY_STRING
+import id.andiwijaya.story.core.util.DateTimeUtil.convertDateAndTime
 import id.andiwijaya.story.databinding.FragmentDetailBinding
 import id.andiwijaya.story.presentation.util.hide
 import id.andiwijaya.story.presentation.util.show
@@ -39,7 +40,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>() {
             pbStoryDetail.hide()
             tvName.text = it.name
             tvDescription.text = it.description
-            tvTime.text = it.createdAt
+            tvTime.text = convertDateAndTime(it.createdAt)
             context?.let { context -> Glide.with(context).load(it.photoUrl).into(ivStory) }
         }
     }

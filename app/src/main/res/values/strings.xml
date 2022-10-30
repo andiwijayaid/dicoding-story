@@ -21,4 +21,7 @@
     <string name="registration_success">Registration Successful</string>
     <string name="registration_success_desc">Your account has been created successfully. You can login now.</string>
     <string name="min_n_char">Min. %d character</string>
+    <string name="second_format">%ds</string>
+    <string name="minute_format">%dm</string>
+    <string name="hour_format">%dh</string>
 </resources>

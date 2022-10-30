@@ -17,6 +17,11 @@ object Constants {
         const val ARG_KEY_ID = "id"
     }
 
+    object DateFormat {
+        const val RESPONSE_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        const val DATE_TIME_SHORT_FORMAT = "HH.mm · dd/MM/yy"
+    }
+
     const val ZERO = 0
     const val ONE = 1
     const val EMPTY_STRING = ""
