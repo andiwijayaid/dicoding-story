@@ -9,7 +9,6 @@ import id.andiwijaya.story.core.Result
 import id.andiwijaya.story.data.remote.dto.request.RegisterRequest
 import id.andiwijaya.story.domain.model.RegisterResult
 import id.andiwijaya.story.domain.usecase.post.RegisterUseCase
-import id.andiwijaya.story.presentation.fragment.RegistrationFragmentDirections
 import javax.inject.Inject
 
 @HiltViewModel
@@ -35,7 +34,5 @@ class RegistrationViewModel @Inject constructor(
     fun register() = collectFlow(
         registerUseCase(RegisterRequest(name, email, password)), _registerResult
     )
-
-    fun navigateToLogin() = goTo(RegistrationFragmentDirections.actionRegistrationToLogin())
 
 }

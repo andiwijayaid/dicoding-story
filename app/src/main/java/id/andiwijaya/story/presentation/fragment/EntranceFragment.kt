@@ -21,16 +21,11 @@ class EntranceFragment : BaseFragment<FragmentEntranceBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(viewModel) {
         super.onViewCreated(view, savedInstanceState)
-        observeNavigation(this)
         val action: NavDirections = when {
-            isTokenBlank() -> {
-                EntranceFragmentDirections.actionToLogin()
-            }
-            else -> {
-                EntranceFragmentDirections.actionToHome()
-            }
+            isTokenBlank() -> EntranceFragmentDirections.actionToLogin()
+            else -> EntranceFragmentDirections.actionToHome()
         }
-        navigate(action)
+        pop(action)
     }
 
 }

@@ -22,12 +22,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         super.onViewCreated(view, savedInstanceState)
-        observeNavigation(viewModel)
         btLogin.setOnClickListener {
             viewModel.login()
         }
         tvRegister.setOnClickListener {
-            viewModel.navigateToRegistration()
+            goTo(LoginFragmentDirections.actionLoginToRegistration())
         }
         etEmail.getEditText().addTextChangedListener {
             viewModel.email = it.toString()
@@ -56,7 +55,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             }
         }) {
             btLogin.isLoading(false)
-            viewModel.navigateToHome()
+            pop(LoginFragmentDirections.actionLoginToHome())
         }
     }
 }

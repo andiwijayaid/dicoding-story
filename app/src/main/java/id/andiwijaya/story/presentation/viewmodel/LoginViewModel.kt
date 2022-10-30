@@ -9,7 +9,6 @@ import id.andiwijaya.story.core.Result
 import id.andiwijaya.story.data.remote.dto.request.LoginRequest
 import id.andiwijaya.story.domain.model.LoginResult
 import id.andiwijaya.story.domain.usecase.post.LoginUseCase
-import id.andiwijaya.story.presentation.fragment.LoginFragmentDirections
 import javax.inject.Inject
 
 @HiltViewModel
@@ -27,9 +26,5 @@ class LoginViewModel @Inject constructor(
     fun isAllFilled() = listOf(email, password).contains(EMPTY_STRING).not()
 
     fun login() = collectFlow(loginUseCase(LoginRequest(email, password)), _loginResult)
-
-    fun navigateToHome() = pop(LoginFragmentDirections.actionLoginToHome())
-
-    fun navigateToRegistration() = goTo(LoginFragmentDirections.actionLoginToRegistration())
 
 }

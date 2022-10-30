@@ -26,7 +26,6 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         super.onViewCreated(view, savedInstanceState)
-        observeNavigation(viewModel)
         viewModel.getStory(arguments?.getString(ARG_KEY_ID, EMPTY_STRING).orEmpty())
         observeDataFlow(viewModel.story, onLoad = {
             clgStoryDetailContent.hide()
@@ -34,7 +33,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>() {
         }, onError = {
             clgStoryDetailContent.hide()
             pbStoryDetail.hide()
-            showErrorDialog { viewModel.backToHome() }
+            showErrorDialog { back() }
         }) {
             clgStoryDetailContent.show()
             pbStoryDetail.hide()

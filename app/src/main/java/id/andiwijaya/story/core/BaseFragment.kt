@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
+import androidx.navigation.NavDirections
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
@@ -58,22 +59,17 @@ abstract class BaseFragment<T : ViewBinding> : Fragment() {
         }
     }
 
-    protected fun observeNavigation(viewModel: BaseViewModel) = with(viewModel) {
-        navigation.observe(viewLifecycleOwner) {
-            when (it) {
-                is NavigationCommand.Pop -> {
-                    findNavController().navigate(
-                        it.directions,
-                        NavOptions.Builder().apply {
-                            setPopUpTo(R.id.nav_graph, true)
-                            setLaunchSingleTop(true)
-                        }.build()
-                    )
-                }
-                is NavigationCommand.GoTo -> findNavController().navigate(it.directions)
-            }
-        }
-    }
+    protected fun pop(navDirections: NavDirections) = findNavController().navigate(
+        navDirections,
+        NavOptions.Builder().apply {
+            setPopUpTo(R.id.nav_graph, true)
+            setLaunchSingleTop(true)
+        }.build()
+    )
+
+    protected fun goTo(navDirections: NavDirections) = findNavController().navigate(navDirections)
+
+    protected fun back() = findNavController().navigateUp()
 
     fun showErrorDialog(
         message: String? = null,

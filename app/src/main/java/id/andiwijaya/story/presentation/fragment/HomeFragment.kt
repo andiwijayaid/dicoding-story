@@ -1,12 +1,7 @@
 package id.andiwijaya.story.presentation.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.View
-import android.view.ViewGroup
-import android.view.MenuItem
-import android.view.MenuInflater
+import android.view.*
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -27,13 +22,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private val viewModel by viewModels<HomeViewModel>()
 
-    private val adapter by lazy { StoryAdapter { viewModel.navigateToDetail(it) } }
+    private val adapter by lazy {
+        StoryAdapter { goTo(HomeFragmentDirections.actionHomeToDetail(it)) }
+    }
 
     override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
         FragmentHomeBinding.inflate(inflater, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
-        observeNavigation(viewModel)
         viewModel.getStories(ONE)
         rvStory.addItemDecoration(
             DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
@@ -65,11 +61,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                             getString(R.string.logout)
                         ) {
                             viewModel.logOut()
+                            pop(HomeFragmentDirections.actionHomeToLogin())
                         }
                     }
-                    else -> {
-                        viewModel.navigateToAddNewStory()
-                    }
+                    else -> goTo(HomeFragmentDirections.actionHomeToAddNewStory())
                 }
                 return true
             }

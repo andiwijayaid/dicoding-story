@@ -7,7 +7,6 @@ import id.andiwijaya.story.core.BaseViewModel
 import id.andiwijaya.story.core.Result
 import id.andiwijaya.story.domain.model.Story
 import id.andiwijaya.story.domain.usecase.get.GetStoryUseCase
-import id.andiwijaya.story.presentation.fragment.DetailFragmentDirections
 import javax.inject.Inject
 
 @HiltViewModel
@@ -19,7 +18,5 @@ class DetailViewModel @Inject constructor(
     val story: LiveData<Result<Story>> = _story
 
     fun getStory(id: String) = collectFlow(getStoryUseCase(id), _story)
-
-    fun backToHome() = goTo(DetailFragmentDirections.actionDetailToHome())
 
 }

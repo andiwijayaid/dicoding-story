@@ -8,7 +8,6 @@ import id.andiwijaya.story.core.BaseViewModel
 import id.andiwijaya.story.domain.model.Story
 import id.andiwijaya.story.domain.usecase.get.GetStoriesUseCase
 import id.andiwijaya.story.domain.usecase.remove.RemoveTokenUseCase
-import id.andiwijaya.story.presentation.fragment.HomeFragmentDirections
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,13 +23,6 @@ class HomeViewModel @Inject constructor(
         getStoriesUseCase(page, size, location), _stories
     )
 
-    fun logOut() {
-        removeTokenUseCase.invoke()
-        pop(HomeFragmentDirections.actionHomeToLogin())
-    }
-
-    fun navigateToDetail(id: String) = goTo(HomeFragmentDirections.actionHomeToDetail(id))
-
-    fun navigateToAddNewStory() = goTo(HomeFragmentDirections.actionHomeToAddNewStory())
+    fun logOut() = removeTokenUseCase.invoke()
 
 }
