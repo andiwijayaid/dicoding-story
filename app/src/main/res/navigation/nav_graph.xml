@@ -64,6 +64,15 @@
         android:id="@+id/fragment_detail"
         android:name="id.andiwijaya.story.presentation.fragment.DetailFragment">
 
+        <argument
+            android:name="id"
+            android:defaultValue=""
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_detail_to_home"
+            app:destination="@id/fragment_home" />
+
     </fragment>
 
 </navigation>

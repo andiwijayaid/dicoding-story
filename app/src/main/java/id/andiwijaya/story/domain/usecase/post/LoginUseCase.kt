@@ -7,9 +7,7 @@ import id.andiwijaya.story.domain.repository.StoryRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class LoginUseCase @Inject constructor(
-    private val repository: StoryRepository
-) {
+class LoginUseCase @Inject constructor(private val repository: StoryRepository) {
     operator fun invoke(request: LoginRequest): Flow<Result<LoginResult>> {
         return repository.login(request)
     }

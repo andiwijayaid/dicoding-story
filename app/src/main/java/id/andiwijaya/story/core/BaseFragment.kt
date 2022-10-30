@@ -77,7 +77,8 @@ abstract class BaseFragment<T : ViewBinding> : Fragment() {
 
     fun showErrorDialog(
         message: String? = null,
-        buttonText: String? = null
+        buttonText: String? = null,
+        onButtonClick: (() -> Unit)? = null
     ) {
         storyBottomDialog = StoryBottomDialog(
             context?.getString(R.string.general_error_title),
@@ -86,6 +87,7 @@ abstract class BaseFragment<T : ViewBinding> : Fragment() {
         )
         storyBottomDialog.onClickListener = object : StoryBottomDialog.OnButtonClickListener {
             override fun onPrimaryClickedListener() {
+                onButtonClick?.invoke()
                 storyBottomDialog.dismiss()
             }
 

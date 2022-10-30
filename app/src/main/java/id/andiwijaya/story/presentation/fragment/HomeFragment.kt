@@ -21,7 +21,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private val viewModel by viewModels<HomeViewModel>()
 
-    private val adapter by lazy { StoryAdapter() }
+    private val adapter by lazy { StoryAdapter { viewModel.navigateToDetail(it) } }
 
     override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
         FragmentHomeBinding.inflate(inflater, container, false)

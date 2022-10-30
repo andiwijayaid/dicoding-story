@@ -18,6 +18,7 @@ interface StoryRepository {
         size: Int? = DEFAULT_PAGE_SIZE,
         location: Int? = null
     ): Flow<PagingData<Story>>
+    fun getStory(id: String): Flow<Result<Story>>
     fun loadToken(): String
     fun removeToken()
 }

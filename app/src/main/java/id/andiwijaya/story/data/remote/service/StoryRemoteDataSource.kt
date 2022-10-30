@@ -6,6 +6,7 @@ import id.andiwijaya.story.data.remote.api.StoryApi
 import id.andiwijaya.story.data.remote.dto.request.LoginRequest
 import id.andiwijaya.story.data.remote.dto.request.RegisterRequest
 import id.andiwijaya.story.data.remote.dto.response.GetStoriesResponse
+import id.andiwijaya.story.data.remote.dto.response.GetStoryResponse
 import id.andiwijaya.story.data.remote.dto.response.LoginResponse
 import id.andiwijaya.story.data.remote.dto.response.RegisterResponse
 import javax.inject.Inject
@@ -26,6 +27,10 @@ class StoryRemoteDataSource @Inject constructor(
         page: Int, size: Int? = null, location: Int? = null
     ): Result<GetStoriesResponse> {
         return getResultWithSingleObject { api.getStories(page, size, location) }
+    }
+
+    suspend fun getStory(id: String): Result<GetStoryResponse> {
+        return getResultWithSingleObject { api.getStory(id) }
     }
 
 }

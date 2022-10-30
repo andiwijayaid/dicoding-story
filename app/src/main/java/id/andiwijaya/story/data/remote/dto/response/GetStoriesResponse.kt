@@ -1,13 +1,13 @@
 package id.andiwijaya.story.data.remote.dto.response
 
-import id.andiwijaya.story.data.remote.dto.model.ListStoryDto
+import id.andiwijaya.story.data.remote.dto.model.StoryDto
 import id.andiwijaya.story.domain.model.ListStory
 import id.andiwijaya.story.domain.model.Story
 
 data class GetStoriesResponse(
     val error: Boolean,
     val message: String,
-    val listStory: List<ListStoryDto>
+    val listStory: List<StoryDto>
 )
 
 fun GetStoriesResponse.toListStory() = ListStory(

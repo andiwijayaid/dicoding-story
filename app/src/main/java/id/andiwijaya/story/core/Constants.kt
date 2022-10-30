@@ -13,6 +13,10 @@ object Constants {
         const val PREF_KEY_TOKEN = "token"
     }
 
+    object Argument {
+        const val ARG_KEY_ID = "id"
+    }
+
     const val ZERO = 0
     const val ONE = 1
     const val EMPTY_STRING = ""

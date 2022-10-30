@@ -1,6 +1,6 @@
 package id.andiwijaya.story.data.remote.dto.model
 
-data class ListStoryDto(
+data class StoryDto(
     val id: String,
     val name: String,
     val description: String,

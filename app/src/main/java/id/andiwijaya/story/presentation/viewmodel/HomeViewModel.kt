@@ -29,4 +29,6 @@ class HomeViewModel @Inject constructor(
         pop(HomeFragmentDirections.actionHomeToLogin())
     }
 
+    fun navigateToDetail(id: String) = goTo(HomeFragmentDirections.actionHomeToDetail(id))
+
 }

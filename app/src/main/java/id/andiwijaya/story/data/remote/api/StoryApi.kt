@@ -5,6 +5,7 @@ import id.andiwijaya.story.core.Constants.ZERO
 import id.andiwijaya.story.data.remote.dto.request.LoginRequest
 import id.andiwijaya.story.data.remote.dto.request.RegisterRequest
 import id.andiwijaya.story.data.remote.dto.response.GetStoriesResponse
+import id.andiwijaya.story.data.remote.dto.response.GetStoryResponse
 import id.andiwijaya.story.data.remote.dto.response.LoginResponse
 import id.andiwijaya.story.data.remote.dto.response.RegisterResponse
 import retrofit2.Response
@@ -12,6 +13,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
+import retrofit2.http.Path
 
 interface StoryApi {
 
@@ -27,5 +29,8 @@ interface StoryApi {
         @Query("size") size: Int? = DEFAULT_PAGE_SIZE,
         @Query("location") location: Int? = ZERO
     ): Response<GetStoriesResponse>
+
+    @GET("stories/{id}")
+    suspend fun getStory(@Path("id") id: String): Response<GetStoryResponse>
 
 }
