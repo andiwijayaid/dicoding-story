@@ -32,4 +32,7 @@
     <dimen name="register_button_margin_top">8dp</dimen>
     <dimen name="item_story_load_footer_progress_bar_elevation">2dp</dimen>
     <dimen name="toolbar_back_button_padding">16dp</dimen>
+    <dimen name="add_new_story_image_margin">16dp</dimen>
+    <dimen name="add_new_story_description_margin_top">16dp</dimen>
+    <dimen name="add_new_story_description_margin_horizontal">16dp</dimen>
 </resources>

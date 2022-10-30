@@ -27,4 +27,6 @@
     <string name="back">back</string>
     <string name="create_story">Create Story</string>
     <string name="story_detail_title">Story</string>
+    <string name="add_new_story_description_hint">What\'s your story today?</string>
+    <string name="add_image">add image</string>
 </resources>

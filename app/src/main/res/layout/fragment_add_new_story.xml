@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <id.andiwijaya.story.presentation.component.StoryToolbar
+        android:id="@+id/stb_add_new_story"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/create_story" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/stb_add_new_story">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/et_story_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/add_new_story_description_margin_horizontal"
+                android:layout_marginTop="@dimen/add_new_story_description_margin_top"
+                android:background="@null"
+                android:gravity="top"
+                android:hint="@string/add_new_story_description_hint"
+                android:importantForAutofill="no"
+                android:inputType="textMultiLine"
+                android:minLines="5"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_new_story"
+                android:layout_width="@dimen/zero_dp"
+                android:layout_height="@dimen/zero_dp"
+                android:layout_margin="@dimen/add_new_story_image_margin"
+                android:background="@drawable/bg_add_new_story_image"
+                android:contentDescription="@string/add_image"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_story_description" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
