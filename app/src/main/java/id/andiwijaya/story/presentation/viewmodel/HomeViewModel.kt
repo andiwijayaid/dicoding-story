@@ -2,7 +2,9 @@ package id.andiwijaya.story.presentation.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import dagger.hilt.android.lifecycle.HiltViewModel
 import id.andiwijaya.story.core.BaseViewModel
 import id.andiwijaya.story.domain.model.Story
@@ -20,7 +22,7 @@ class HomeViewModel @Inject constructor(
     val stories: LiveData<PagingData<Story>> = _stories
 
     fun getStories(page: Int, size: Int? = null, location: Int? = null) = collectFlow(
-        getStoriesUseCase(page, size, location), _stories
+        getStoriesUseCase(page, size, location).cachedIn(viewModelScope), _stories
     )
 
     fun logOut() = removeTokenUseCase.invoke()
