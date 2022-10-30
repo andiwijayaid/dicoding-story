@@ -58,11 +58,16 @@
             android:id="@+id/action_home_to_detail"
             app:destination="@id/fragment_detail" />
 
+        <action
+            android:id="@+id/action_home_to_add_new_story"
+            app:destination="@id/fragment_add_new_story" />
+
     </fragment>
 
     <fragment
         android:id="@+id/fragment_detail"
-        android:name="id.andiwijaya.story.presentation.fragment.DetailFragment">
+        android:name="id.andiwijaya.story.presentation.fragment.DetailFragment"
+        tools:layout="@layout/fragment_detail">
 
         <argument
             android:name="id"
@@ -74,5 +79,10 @@
             app:destination="@id/fragment_home" />
 
     </fragment>
+
+    <fragment
+        android:id="@+id/fragment_add_new_story"
+        android:name="id.andiwijaya.story.presentation.fragment.AddNewStoryFragment"
+        tools:layout="@layout/fragment_add_new_story" />
 
 </navigation>

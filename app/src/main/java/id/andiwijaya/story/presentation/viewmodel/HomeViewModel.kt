@@ -31,4 +31,6 @@ class HomeViewModel @Inject constructor(
 
     fun navigateToDetail(id: String) = goTo(HomeFragmentDirections.actionHomeToDetail(id))
 
+    fun navigateToAddNewStory() = goTo(HomeFragmentDirections.actionHomeToAddNewStory())
+
 }

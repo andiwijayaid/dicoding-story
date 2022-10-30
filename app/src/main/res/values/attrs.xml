@@ -17,4 +17,8 @@
         <attr name="android:text" />
     </declare-styleable>
 
+    <declare-styleable name="StoryToolbar">
+        <attr name="title" />
+    </declare-styleable>
+
 </resources>

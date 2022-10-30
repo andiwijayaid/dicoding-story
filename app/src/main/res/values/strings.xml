@@ -24,4 +24,7 @@
     <string name="second_format">%ds</string>
     <string name="minute_format">%dm</string>
     <string name="hour_format">%dh</string>
+    <string name="back">back</string>
+    <string name="create_story">Create Story</string>
+    <string name="story_detail_title">Story</string>
 </resources>

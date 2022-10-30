@@ -67,7 +67,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                             viewModel.logOut()
                         }
                     }
-                    else -> {}
+                    else -> {
+                        viewModel.navigateToAddNewStory()
+                    }
                 }
                 return true
             }
