@@ -17,6 +17,7 @@ buildscript {
         paging_version = "3.1.1"
         glide_version = "4.14.2"
         three_ten_abp_version = "1.4.2"
+        dexter_version = "6.2.3"
     }
 }
 

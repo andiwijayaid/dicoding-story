@@ -80,4 +80,7 @@ dependencies {
 
     // ThreeTenABP
     implementation "com.jakewharton.threetenabp:threetenabp:$three_ten_abp_version"
+
+    //
+    implementation "com.karumi:dexter:$dexter_version"
 }

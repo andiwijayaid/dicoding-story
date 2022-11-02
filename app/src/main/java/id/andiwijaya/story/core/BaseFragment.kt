@@ -1,5 +1,6 @@
 package id.andiwijaya.story.core
 
+import android.Manifest
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +12,15 @@ import androidx.navigation.NavDirections
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.MultiplePermissionsReport
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import id.andiwijaya.story.R
+import id.andiwijaya.story.core.util.orFalse
 import id.andiwijaya.story.presentation.component.StoryBottomDialog
+
 
 abstract class BaseFragment<T : ViewBinding> : Fragment() {
 
@@ -103,6 +111,7 @@ abstract class BaseFragment<T : ViewBinding> : Fragment() {
         storyBottomDialog.onClickListener = object : StoryBottomDialog.OnButtonClickListener {
             override fun onPrimaryClickedListener() {
                 buttonAction.invoke()
+                storyBottomDialog.dismiss()
             }
 
             override fun onSecondaryClickedListener() = Unit
@@ -115,6 +124,7 @@ abstract class BaseFragment<T : ViewBinding> : Fragment() {
         message: String? = null,
         primaryButtonText: String? = null,
         secondaryButtonText: String? = null,
+        secondaryAction: (() -> Unit)? = null,
         primaryAction: (() -> Unit)? = null
     ) {
         storyBottomDialog = StoryBottomDialog(
@@ -126,10 +136,12 @@ abstract class BaseFragment<T : ViewBinding> : Fragment() {
         )
         storyBottomDialog.onClickListener = object : StoryBottomDialog.OnButtonClickListener {
             override fun onPrimaryClickedListener() {
-                primaryAction?.invoke() ?: storyBottomDialog.dismiss()
+                primaryAction?.invoke()
+                storyBottomDialog.dismiss()
             }
 
             override fun onSecondaryClickedListener() {
+                secondaryAction?.invoke()
                 storyBottomDialog.dismiss()
             }
         }
@@ -156,4 +168,22 @@ abstract class BaseFragment<T : ViewBinding> : Fragment() {
         }
     }
 
+    protected fun askPermissions(listener: PermissionsListener) = Dexter.withContext(context)
+        .withPermissions(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE)
+        .withListener(object : MultiplePermissionsListener {
+            override fun onPermissionsChecked(p0: MultiplePermissionsReport?) {
+                if (p0?.areAllPermissionsGranted().orFalse()) {
+                    listener.onPermissionsGranted()
+                } else listener.onPermissionsDenied()
+            }
+
+            override fun onPermissionRationaleShouldBeShown(
+                p0: MutableList<PermissionRequest>?,
+                p1: PermissionToken?
+            ) {
+                p1?.continuePermissionRequest()
+            }
+        })
+        .withErrorListener { listener.onPermissionsDenied() }
+        .check()
 }

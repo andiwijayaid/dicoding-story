@@ -29,4 +29,7 @@
     <string name="story_detail_title">Story</string>
     <string name="add_new_story_description_hint">What\'s your story today?</string>
     <string name="add_image">add image</string>
+    <string name="ask_permission_title">We Need Your Permission</string>
+    <string name="ask_permission_description">To access some of our features, we need permissions to access your phone resources</string>
+    <string name="ask_permission_primary_button">Go to setting</string>
 </resources>
