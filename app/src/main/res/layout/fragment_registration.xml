@@ -33,6 +33,7 @@
             android:layout_marginTop="@dimen/login_email_edit_text_margin_bottom"
             android:inputType="textPersonName"
             app:hint="@string/name"
+            app:iconSrc="@drawable/ic_name"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
@@ -45,6 +46,7 @@
             android:layout_marginTop="@dimen/register_email_edit_text_margin_top"
             android:inputType="textEmailAddress"
             app:hint="@string/email"
+            app:iconSrc="@drawable/ic_email"
             app:layout_constraintTop_toBottomOf="@id/et_name" />
 
         <id.andiwijaya.story.presentation.component.StoryTextInputLayout
@@ -55,6 +57,7 @@
             android:layout_marginTop="@dimen/register_password_edit_text_margin_top"
             android:inputType="textPassword"
             app:hint="@string/password"
+            app:iconSrc="@drawable/ic_password"
             app:layout_constraintTop_toBottomOf="@id/et_email"
             app:minChar="6" />
 
@@ -66,6 +69,7 @@
             android:layout_marginTop="@dimen/register_password_edit_text_margin_top"
             android:inputType="textPassword"
             app:hint="@string/confirm_password"
+            app:iconSrc="@drawable/ic_password"
             app:layout_constraintTop_toBottomOf="@id/et_password"
             app:minChar="6" />
 
