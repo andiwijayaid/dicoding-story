@@ -22,6 +22,7 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         super.onViewCreated(view, savedInstanceState)
+        stbRegistration.setNavigationOnClickListener { back() }
         etName.getEditText().addTextChangedListener {
             viewModel.name = it.toString()
             validateForm()

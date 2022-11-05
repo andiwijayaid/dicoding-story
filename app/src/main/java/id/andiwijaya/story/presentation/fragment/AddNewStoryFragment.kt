@@ -36,7 +36,7 @@ class AddNewStoryFragment : BaseFragment<FragmentAddNewStoryBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         super.onViewCreated(view, savedInstanceState)
-
+        stbAddNewStory.setNavigationOnClickListener { back() }
         ivNewStory.setOnClickListener { mediaDialog.show(childFragmentManager, TAG_ERROR) }
         btAddStory.setOnClickListener { viewModel.postStory() }
         etStoryDescription.addTextChangedListener {

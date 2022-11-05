@@ -8,6 +8,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <id.andiwijaya.story.presentation.component.StoryToolbar
+            android:id="@+id/stb_registration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/tv_story"
             style="@style/StoryTitle"

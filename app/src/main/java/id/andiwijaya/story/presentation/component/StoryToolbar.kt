@@ -24,6 +24,10 @@ class StoryToolbar @JvmOverloads constructor(
         }
     }
 
+    override fun setNavigationOnClickListener(listener: OnClickListener?) {
+        binding.ivBack.setOnClickListener { listener?.onClick(it) }
+    }
+
     private fun setToolbarTitle(title: String) {
         binding.tvToolbarTitle.text = title
     }

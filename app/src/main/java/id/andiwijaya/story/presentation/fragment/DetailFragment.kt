@@ -26,6 +26,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         super.onViewCreated(view, savedInstanceState)
+        stbDetail.setNavigationOnClickListener { back() }
         viewModel.getStory(arguments?.getString(ARG_KEY_ID, EMPTY_STRING).orEmpty())
         observeDataFlow(viewModel.story, onLoad = {
             clgStoryDetailContent.hide()
