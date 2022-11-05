@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="register">Daftar</string>
+    <string name="do_not_have_an_account">Belum punya akun?</string>
+    <string name="already_have_an_account">Sudah punya akun?</string>
+    <string name="name">Nama</string>
+    <string name="confirm_password">Konfirmasi Password</string>
+    <string name="wrong_email_or_password">Email atau Password Anda salah</string>
+    <string name="general_error_title">Terjadi kesalahan</string>
+    <string name="general_error_message">Mohon mencoba beberapa saat lagi</string>
+    <string name="close">Tutup</string>
+    <string name="add_story">Tambah Cerita</string>
+    <string name="dismiss">Tutup</string>
+    <string name="agree">Setuju</string>
+    <string name="logout_confirmation">Apakah Anda yakin ingin keluar?</string>
+    <string name="password_is_not_match">Password tidak sesuai</string>
+    <string name="registration_success">Registrasi Berhasil</string>
+    <string name="registration_success_desc">Akun Anda telah berhasil dibuat. Anda dapat login sekarang.</string>
+    <string name="min_n_char">Min. %d karakter</string>
+    <string name="second_format">%dd</string>
+    <string name="minute_format">%dm</string>
+    <string name="hour_format">%dj</string>
+    <string name="back">kembali</string>
+    <string name="create_story">Buat Cerita</string>
+    <string name="story_detail_title">Cerita</string>
+    <string name="add_new_story_description_hint">Apa cerita Anda hari ini?</string>
+    <string name="add_image">tambah gambar</string>
+    <string name="ask_permission_title">Kamu membutuhkan izin Anda</string>
+    <string name="ask_permission_description">Untuk mengakses beberapa fitur, kami memerlukan izin untuk mengakses sumber daya ponsel Anda</string>
+    <string name="ask_permission_primary_button">Ke pengaturan</string>
+    <string name="gallery">Galeri</string>
+    <string name="camera">Kamera</string>
+    <string name="icon">ikon</string>
+</resources>
