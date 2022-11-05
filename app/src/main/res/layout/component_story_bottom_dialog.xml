@@ -12,22 +12,22 @@
         android:id="@+id/iv_close"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/close"
         android:padding="@dimen/error_dialog_close_button_padding"
         android:src="@drawable/ic_close"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/close" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/iv_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/icon"
         android:padding="@dimen/error_dialog_icon_padding"
         android:src="@drawable/ic_error_outline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/icon" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_error_title"
@@ -61,12 +61,14 @@
 
     <TextView
         android:id="@+id/bt_secondary"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/zero_dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/error_dialog_secondary_button_margin_top"
+        android:gravity="center"
+        android:padding="@dimen/error_dialog_secondary_button_padding"
         android:text="@string/dismiss"
         android:textColor="@color/main_color"
-        android:textSize="18sp"
+        android:textSize="@dimen/error_dialog_secondary_button_text_size"
         android:textStyle="bold"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"

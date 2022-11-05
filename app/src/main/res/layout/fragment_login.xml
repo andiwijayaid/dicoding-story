@@ -67,6 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/login_register_margin_start"
         android:layout_marginBottom="@dimen/login_footer_margin_bottom"
+        android:paddingTop="@dimen/login_footer_padding_top"
         android:text="@string/register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

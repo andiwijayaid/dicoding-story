@@ -35,6 +35,7 @@ class StoryBottomDialog(
     }
 
     private fun setContent() = with(binding) {
+        isCancelable = false
         icon?.let { ivIcon.setImageResource(it) }
         tvErrorTitle.text = title?.takeIf { it.isNotBlank() } ?: tvErrorTitle.text
         tvErrorMessage.text = message?.takeIf { it.isNotBlank() } ?: tvErrorMessage.text
