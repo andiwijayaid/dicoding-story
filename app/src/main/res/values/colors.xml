@@ -11,5 +11,7 @@
     <color name="grey">#738095</color>
     <color name="color_button_pressed">#4267B2</color>
     <color name="color_button_enable">#4267B2</color>
-    <color name="color_button_disable">#804267B2</color>
+    <color name="color_button_disable">#1A4267B2</color>
+    <color name="status_bar_color">#F9F9F9</color>
+    <color name="icon_tint">#000000</color>
 </resources>

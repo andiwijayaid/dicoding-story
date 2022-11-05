@@ -61,6 +61,5 @@
     <dimen name="item_story_description_margin_horizontal">14dp</dimen>
     <dimen name="item_story_description_margin_top">8dp</dimen>
     <dimen name="item_story_image_margin_top">8dp</dimen>
-    <dimen name="item_story_image_max_height">300dp</dimen>
-    <dimen name="item_story_image_min_height">300dp</dimen>
+    <dimen name="item_story_image_height">200dp</dimen>
 </resources>

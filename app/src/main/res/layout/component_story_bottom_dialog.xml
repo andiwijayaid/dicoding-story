@@ -16,7 +16,8 @@
         android:src="@drawable/ic_close"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/close" />
 
     <ImageView
         android:id="@+id/iv_icon"
@@ -25,7 +26,8 @@
         android:padding="@dimen/error_dialog_icon_padding"
         android:src="@drawable/ic_error_outline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/icon" />
 
     <TextView
         android:id="@+id/tv_error_title"
@@ -45,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/error_dialog_message_margin_start"
         android:text="@string/general_error_message"
-        android:textColor="@color/black"
+        android:theme="@style/description"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_error_title" />
 

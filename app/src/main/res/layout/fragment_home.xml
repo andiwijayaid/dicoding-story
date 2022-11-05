@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:title="@string/app_name"
+        app:titleTextColor="@color/main_color"
         app:titleTextAppearance="@style/ToolbarTextAppearance" />
 
     <androidx.recyclerview.widget.RecyclerView

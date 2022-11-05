@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/detail_description_margin_horizontal"
                 android:layout_marginTop="@dimen/detail_description_margin_top"
-                android:textColor="@color/black"
+                android:theme="@style/description"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_name" />
 
