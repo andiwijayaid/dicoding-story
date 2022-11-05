@@ -1,6 +1,5 @@
 package id.andiwijaya.story.presentation.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -22,10 +21,7 @@ class StoryAdapter(
             tvTime.text = timeDifference(story.createdAt, root.context)
             tvDescription.text = story.description
             Glide.with(root.context).load(story.photoUrl).into(ivStory)
-            container.setOnClickListener {
-                Log.d("ASDCV", "container.setOnClickListener")
-                onItemSelected(story.id)
-            }
+            container.setOnClickListener { onItemSelected(story.id) }
         }
     }
 

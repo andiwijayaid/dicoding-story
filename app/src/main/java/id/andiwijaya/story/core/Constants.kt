@@ -20,12 +20,20 @@ object Constants {
     object DateFormat {
         const val RESPONSE_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         const val DATE_TIME_SHORT_FORMAT = "HH.mm · dd/MM/yy"
+        const val FILE_NAME = "'story'-yyyy-MM-dd HH.mm.ss"
     }
 
     const val ZERO = 0
     const val ONE = 1
+    const val FIVE = 5
     const val EMPTY_STRING = ""
     const val MIN_CHAR_ERROR_DELAY_IN_MILLIS = 1500L
     const val DEFAULT_PAGE_SIZE = 20
+    const val INITIAL_COMPRESS_QUALITY = 100
+    const val MAX_STREAM_LENGTH = 1000000
+    const val IMAGE_JPEG = "image/jpeg"
+    const val DOT_JPG = ".jpg"
+    const val BYTE_MULTIPLIER = 1024
+    const val MULTIPART_BODY_NAME = "photo"
 
 }

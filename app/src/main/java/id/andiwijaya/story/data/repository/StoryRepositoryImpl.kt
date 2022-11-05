@@ -7,6 +7,7 @@ import id.andiwijaya.story.core.Result
 import id.andiwijaya.story.data.local.StoryLocalDataSource
 import id.andiwijaya.story.data.remote.dto.request.LoginRequest
 import id.andiwijaya.story.data.remote.dto.request.RegisterRequest
+import id.andiwijaya.story.data.remote.dto.response.toGenericResult
 import id.andiwijaya.story.data.remote.dto.response.toLoginResult
 import id.andiwijaya.story.data.remote.dto.response.toRegisterResult
 import id.andiwijaya.story.data.remote.dto.response.toStory
@@ -19,6 +20,8 @@ import id.andiwijaya.story.domain.model.RegisterResult
 import id.andiwijaya.story.domain.model.Story
 import id.andiwijaya.story.domain.repository.StoryRepository
 import kotlinx.coroutines.flow.Flow
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -47,6 +50,14 @@ class StoryRepositoryImpl @Inject constructor(
         networkCall = { remoteDataSource.getStory(id).mapToDomain { toStory() } },
         saveCallResult = {}
     )
+
+    override fun postStory(photo: MultipartBody.Part, description: RequestBody) =
+        resultFlow(
+            networkCall = {
+                remoteDataSource.postStory(photo, description).mapToDomain { toGenericResult() }
+            },
+            saveCallResult = {}
+        )
 
     override fun loadToken(): String = localDataSource.loadToken()
 

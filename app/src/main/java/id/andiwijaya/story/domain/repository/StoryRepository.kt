@@ -6,9 +6,12 @@ import id.andiwijaya.story.core.Result
 import id.andiwijaya.story.data.remote.dto.request.LoginRequest
 import id.andiwijaya.story.data.remote.dto.request.RegisterRequest
 import id.andiwijaya.story.domain.model.LoginResult
+import id.andiwijaya.story.domain.model.GenericResult
 import id.andiwijaya.story.domain.model.RegisterResult
 import id.andiwijaya.story.domain.model.Story
 import kotlinx.coroutines.flow.Flow
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 
 interface StoryRepository {
     fun login(request: LoginRequest): Flow<Result<LoginResult>>
@@ -19,6 +22,9 @@ interface StoryRepository {
         location: Int? = null
     ): Flow<PagingData<Story>>
     fun getStory(id: String): Flow<Result<Story>>
+    fun postStory(
+        photo: MultipartBody.Part, description: RequestBody
+    ): Flow<Result<GenericResult>>
     fun loadToken(): String
     fun removeToken()
 }

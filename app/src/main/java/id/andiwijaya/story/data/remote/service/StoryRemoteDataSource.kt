@@ -5,10 +5,9 @@ import id.andiwijaya.story.core.Result
 import id.andiwijaya.story.data.remote.api.StoryApi
 import id.andiwijaya.story.data.remote.dto.request.LoginRequest
 import id.andiwijaya.story.data.remote.dto.request.RegisterRequest
-import id.andiwijaya.story.data.remote.dto.response.GetStoriesResponse
-import id.andiwijaya.story.data.remote.dto.response.GetStoryResponse
-import id.andiwijaya.story.data.remote.dto.response.LoginResponse
-import id.andiwijaya.story.data.remote.dto.response.RegisterResponse
+import id.andiwijaya.story.data.remote.dto.response.*
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import javax.inject.Inject
 
 class StoryRemoteDataSource @Inject constructor(
@@ -31,6 +30,12 @@ class StoryRemoteDataSource @Inject constructor(
 
     suspend fun getStory(id: String): Result<GetStoryResponse> {
         return getResultWithSingleObject { api.getStory(id) }
+    }
+
+    suspend fun postStory(
+        photo: MultipartBody.Part, description: RequestBody
+    ): Result<GenericResponse> {
+        return getResultWithSingleObject { api.postStory(photo, description) }
     }
 
 }
