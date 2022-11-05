@@ -44,4 +44,23 @@
     <dimen name="media_bottom_dialog_content_padding_top">32dp</dimen>
     <dimen name="media_bottom_dialog_content_padding_bottom">64dp</dimen>
     <dimen name="media_bottom_dialog_content_text_size">18sp</dimen>
+    <dimen name="story_text_input_layout_width">38dp</dimen>
+    <dimen name="story_text_input_layout_padding_end">8dp</dimen>
+    <dimen name="detail_name_margin_horizontal">16dp</dimen>
+    <dimen name="detail_name_margin_top">8dp</dimen>
+    <dimen name="detail_description_margin_horizontal">16dp</dimen>
+    <dimen name="detail_description_margin_top">8dp</dimen>
+    <dimen name="detail_image_margin_horizontal">16dp</dimen>
+    <dimen name="detail_image_margin_top">8dp</dimen>
+    <dimen name="detail_time_margin_horizontal">16dp</dimen>
+    <dimen name="detail_time_margin_top">8dp</dimen>
+    <dimen name="detail_time_margin_bottom">24dp</dimen>
+    <dimen name="item_story_padding_vertical">14dp</dimen>
+    <dimen name="item_story_name_margin_horizontal">14dp</dimen>
+    <dimen name="item_story_time_margin_start">8dp</dimen>
+    <dimen name="item_story_description_margin_horizontal">14dp</dimen>
+    <dimen name="item_story_description_margin_top">8dp</dimen>
+    <dimen name="item_story_image_margin_top">8dp</dimen>
+    <dimen name="item_story_image_max_height">300dp</dimen>
+    <dimen name="item_story_image_min_height">300dp</dimen>
 </resources>

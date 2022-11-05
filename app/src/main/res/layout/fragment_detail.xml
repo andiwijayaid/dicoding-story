@@ -26,8 +26,8 @@
                 android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="@dimen/detail_name_margin_horizontal"
+                android:layout_marginTop="@dimen/detail_name_margin_top"
                 android:theme="@style/userName"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -36,8 +36,8 @@
                 android:id="@+id/tv_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="@dimen/detail_description_margin_horizontal"
+                android:layout_marginTop="@dimen/detail_description_margin_top"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_name" />
@@ -46,19 +46,20 @@
                 android:id="@+id/iv_story"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="8dp"
-                android:maxHeight="500dp"
-                android:minHeight="500dp"
-                android:scaleType="centerCrop"
+                android:layout_marginHorizontal="@dimen/detail_image_margin_horizontal"
+                android:layout_marginTop="@dimen/detail_image_margin_top"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
                 app:layout_constraintTop_toBottomOf="@id/tv_description" />
 
             <TextView
                 android:id="@+id/tv_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="@dimen/detail_time_margin_horizontal"
+                android:layout_marginTop="@dimen/detail_time_margin_top"
+                android:layout_marginBottom="@dimen/detail_time_margin_bottom"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/iv_story" />
 
@@ -66,7 +67,7 @@
                 android:id="@+id/clg_story_detail_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:constraint_referenced_ids="tv_name, tv_time, iv_story, tv_description" />
 
             <ProgressBar

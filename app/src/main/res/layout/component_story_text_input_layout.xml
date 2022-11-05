@@ -6,10 +6,11 @@
 
     <ImageView
         android:id="@+id/iv_til_icon"
-        android:layout_width="38dp"
-        android:layout_height="0dp"
-        android:paddingStart="0dp"
-        android:paddingEnd="8dp"
+        android:layout_width="@dimen/story_text_input_layout_width"
+        android:layout_height="@dimen/zero_dp"
+        android:contentDescription="@string/icon"
+        android:paddingStart="@dimen/zero_dp"
+        android:paddingEnd="@dimen/story_text_input_layout_padding_end"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/textInputLayout"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,7 +18,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/zero_dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/main_color"
         android:theme="@style/StoryTextInputLayout"
