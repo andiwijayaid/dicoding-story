@@ -66,4 +66,7 @@
     <dimen name="item_story_description_margin_top">8dp</dimen>
     <dimen name="item_story_image_margin_top">8dp</dimen>
     <dimen name="item_story_image_height">200dp</dimen>
+    <dimen name="reload_story_drawable_padding">12dp</dimen>
+    <dimen name="reload_story_padding">24dp</dimen>
+    <dimen name="reload_story_text_size">18sp</dimen>
 </resources>

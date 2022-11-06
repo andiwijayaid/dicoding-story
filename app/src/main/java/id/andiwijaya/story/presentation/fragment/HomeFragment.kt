@@ -6,8 +6,10 @@ import android.os.Bundle
 import android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS
 import android.view.*
 import androidx.core.view.MenuProvider
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,19 +37,24 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         FragmentHomeBinding.inflate(inflater, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
-        viewModel.getStories(ONE)
         rvStory.addItemDecoration(
             DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         )
         rvStory.adapter = adapter.withLoadStateFooter(
-            footer = StoryLoadStateAdapter {
-                viewModel.getStories(ONE)
-            }
+            footer = StoryLoadStateAdapter { viewModel.getStories(ONE) }
         )
         rvStory.layoutManager = LinearLayoutManager(context)
         viewModel.stories.observe(viewLifecycleOwner) {
             lifecycleScope.launch { adapter.submitData(it) }
         }
+        srlStory.setOnRefreshListener {
+            adapter.refresh()
+        }
+        adapter.addLoadStateListener {
+            srlStory.isRefreshing = it.refresh is LoadState.Loading
+            tvReload.isVisible = it.refresh is LoadState.Error
+        }
+        tvReload.setOnClickListener { adapter.refresh() }
         setupToolbar()
     }
 

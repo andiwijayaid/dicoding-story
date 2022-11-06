@@ -14,6 +14,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import id.andiwijaya.story.BuildConfig
 import id.andiwijaya.story.core.BaseFragment
@@ -56,6 +57,7 @@ class AddNewStoryFragment : BaseFragment<FragmentAddNewStoryBinding>() {
             btAddStory.isLoading(false)
             showErrorDialog(it.message)
         }) {
+            findNavController().popBackStack()
             btAddStory.isLoading(false)
             back()
         }
