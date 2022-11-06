@@ -17,10 +17,10 @@ class StoryAdapter(
     class ViewHolder(private val binding: ItemStoryBinding, val onItemSelected: (String) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(story: Story) = with(binding) {
-            tvName.text = story.name
-            tvTime.text = timeDifference(story.createdAt, root.context)
-            tvDescription.text = story.description
-            Glide.with(root.context).load(story.photoUrl).into(ivStory)
+            tvItemName.text = story.name
+            tvItemTime.text = timeDifference(story.createdAt, root.context)
+            tvItemDescription.text = story.description
+            Glide.with(root.context).load(story.photoUrl).into(ivItemPhoto)
             container.setOnClickListener { onItemSelected(story.id) }
         }
     }

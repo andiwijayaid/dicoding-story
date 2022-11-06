@@ -38,9 +38,9 @@ class AddNewStoryFragment : BaseFragment<FragmentAddNewStoryBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         super.onViewCreated(view, savedInstanceState)
         stbAddNewStory.setNavigationOnClickListener { back() }
-        ivNewStory.setOnClickListener { mediaDialog.show(childFragmentManager, TAG_ERROR) }
+        ivAddStory.setOnClickListener { mediaDialog.show(childFragmentManager, TAG_ERROR) }
         btAddStory.setOnClickListener { viewModel.postStory() }
-        etStoryDescription.addTextChangedListener {
+        edAddDescription.addTextChangedListener {
             viewModel.description = it.toString()
             validateForm()
         }
@@ -80,7 +80,7 @@ class AddNewStoryFragment : BaseFragment<FragmentAddNewStoryBinding>() {
             val selectedImg: Uri = result.data?.data as Uri
             val myFile = context?.let { uriToFile(selectedImg, it).reduceFileImage() }
             viewModel.photo = myFile?.toMultiBodyPart(myFile.name)
-            binding.ivNewStory.setImageURI(selectedImg)
+            binding.ivAddStory.setImageURI(selectedImg)
             validateForm()
         }
         mediaDialog.dismiss()
@@ -108,7 +108,7 @@ class AddNewStoryFragment : BaseFragment<FragmentAddNewStoryBinding>() {
         if (it.resultCode == RESULT_OK) {
             val myFile = File(viewModel.photoFromCameraPath).reduceFileImage()
             viewModel.photo = myFile.toMultiBodyPart(myFile.name)
-            binding.ivNewStory.setImageBitmap(BitmapFactory.decodeFile(myFile.path))
+            binding.ivAddStory.setImageBitmap(BitmapFactory.decodeFile(myFile.path))
             validateForm()
         }
         mediaDialog.dismiss()

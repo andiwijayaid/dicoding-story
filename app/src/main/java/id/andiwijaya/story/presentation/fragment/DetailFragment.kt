@@ -41,11 +41,11 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>() {
         }) {
             clgStoryDetailContent.show()
             pbStoryDetail.hide()
-            tvName.text = it.name
-            tvDescription.text = it.description
-            tvTime.text = convertDateAndTime(it.createdAt)
-            context?.let { context -> Glide.with(context).load(it.photoUrl).into(ivStory) }
-            ObjectAnimator.ofFloat(ivStory, View.ALPHA, ONE_FLOAT).apply {
+            tvDetailName.text = it.name
+            tvDetailDescription.text = it.description
+            tvDetailTime.text = convertDateAndTime(it.createdAt)
+            context?.let { context -> Glide.with(context).load(it.photoUrl).into(ivDetailStory) }
+            ObjectAnimator.ofFloat(ivDetailStory, View.ALPHA, ONE_FLOAT).apply {
                 duration = PHOTO_ANIM_DURATION
                 start()
             }

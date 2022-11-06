@@ -52,9 +52,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         }
         adapter.addLoadStateListener {
             srlStory.isRefreshing = it.refresh is LoadState.Loading
-            tvReload.isVisible = it.refresh is LoadState.Error
+            tvHomeReload.isVisible = it.refresh is LoadState.Error
         }
-        tvReload.setOnClickListener { adapter.refresh() }
+        tvHomeReload.setOnClickListener { adapter.refresh() }
         setupToolbar()
     }
 

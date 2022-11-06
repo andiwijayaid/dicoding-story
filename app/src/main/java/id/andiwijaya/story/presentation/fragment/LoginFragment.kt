@@ -28,11 +28,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         tvRegister.setOnClickListener {
             goTo(LoginFragmentDirections.actionLoginToRegistration())
         }
-        etEmail.getEditText().addTextChangedListener {
+        edLoginEmail.getEditText().addTextChangedListener {
             viewModel.email = it.toString()
             validateForm()
         }
-        etPassword.getEditText().addTextChangedListener {
+        edLoginPassword.getEditText().addTextChangedListener {
             viewModel.password = it.toString()
             validateForm()
         }
@@ -50,7 +50,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         }, onError = {
             btLogin.isLoading(false)
             when (it.code) {
-                401 -> etPassword.setError(context?.getString(R.string.wrong_email_or_password))
+                401 -> edLoginPassword.setError(context?.getString(R.string.wrong_email_or_password))
                 else -> showErrorDialog(it.message)
             }
         }) {

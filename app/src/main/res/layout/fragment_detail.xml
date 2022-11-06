@@ -23,7 +23,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tv_name"
+                android:id="@+id/tv_detail_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/detail_name_margin_horizontal"
@@ -33,17 +33,17 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_description"
+                android:id="@+id/tv_detail_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/detail_description_margin_horizontal"
                 android:layout_marginTop="@dimen/detail_description_margin_top"
                 android:theme="@style/description"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_name" />
+                app:layout_constraintTop_toBottomOf="@id/tv_detail_name" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_story"
+                android:id="@+id/iv_detail_story"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/detail_image_margin_horizontal"
@@ -51,10 +51,10 @@
                 android:adjustViewBounds="true"
                 android:alpha="0"
                 android:scaleType="fitCenter"
-                app:layout_constraintTop_toBottomOf="@id/tv_description" />
+                app:layout_constraintTop_toBottomOf="@id/tv_detail_description" />
 
             <TextView
-                android:id="@+id/tv_time"
+                android:id="@+id/tv_detail_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/detail_time_margin_horizontal"
@@ -62,7 +62,7 @@
                 android:layout_marginBottom="@dimen/detail_time_margin_bottom"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_story"
+                app:layout_constraintTop_toBottomOf="@id/iv_detail_story"
                 app:layout_constraintVertical_bias="0.0" />
 
             <androidx.constraintlayout.widget.Group
@@ -70,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="visible"
-                app:constraint_referenced_ids="tv_name, tv_time, iv_story, tv_description" />
+                app:constraint_referenced_ids="tv_detail_name, tv_detail_time, iv_detail_story, tv_detail_description" />
 
             <ProgressBar
                 android:id="@+id/pb_story_detail"

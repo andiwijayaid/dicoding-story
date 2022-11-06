@@ -23,19 +23,19 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         super.onViewCreated(view, savedInstanceState)
         stbRegistration.setNavigationOnClickListener { back() }
-        etName.getEditText().addTextChangedListener {
+        edRegisterName.getEditText().addTextChangedListener {
             viewModel.name = it.toString()
             validateForm()
         }
-        etEmail.getEditText().addTextChangedListener {
+        edRegisterEmail.getEditText().addTextChangedListener {
             viewModel.email = it.toString()
             validateForm()
         }
-        etPassword.getEditText().addTextChangedListener {
+        edRegisterPassword.getEditText().addTextChangedListener {
             viewModel.password = it.toString()
             validateForm()
         }
-        etConfirmPassword.getEditText().addTextChangedListener {
+        edRegisterConfirmPassword.getEditText().addTextChangedListener {
             viewModel.confirmationPassword = it.toString()
             validateForm()
         }
@@ -43,7 +43,7 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
             if (viewModel.isPasswordMatch()) {
                 viewModel.register()
             } else {
-                etConfirmPassword.setError(context?.getString(R.string.password_is_not_match))
+                edRegisterConfirmPassword.setError(context?.getString(R.string.password_is_not_match))
                 viewModel.isButtonEnable.postValue(false)
             }
         }

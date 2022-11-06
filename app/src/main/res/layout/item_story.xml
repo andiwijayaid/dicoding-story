@@ -7,7 +7,7 @@
     android:paddingVertical="@dimen/item_story_padding_vertical">
 
     <TextView
-        android:id="@+id/tv_name"
+        android:id="@+id/tv_item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/item_story_name_margin_horizontal"
@@ -16,15 +16,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_time"
+        android:id="@+id/tv_item_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/item_story_time_margin_start"
-        app:layout_constraintStart_toEndOf="@id/tv_name"
+        app:layout_constraintStart_toEndOf="@id/tv_item_name"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_description"
+        android:id="@+id/tv_item_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/item_story_description_margin_horizontal"
@@ -32,16 +32,16 @@
         android:ellipsize="end"
         android:maxLines="2"
         android:theme="@style/description"
-        app:layout_constraintTop_toBottomOf="@id/tv_name" />
+        app:layout_constraintTop_toBottomOf="@id/tv_item_name" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_story"
+        android:id="@+id/iv_item_photo"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_story_image_height"
         android:layout_marginTop="@dimen/item_story_image_margin_top"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_description" />
+        app:layout_constraintTop_toBottomOf="@id/tv_item_description" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
