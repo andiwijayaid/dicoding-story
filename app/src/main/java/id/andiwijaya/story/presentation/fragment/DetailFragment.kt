@@ -1,5 +1,6 @@
 package id.andiwijaya.story.presentation.fragment
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.andiwijaya.story.core.BaseFragment
 import id.andiwijaya.story.core.Constants.Argument.ARG_KEY_ID
 import id.andiwijaya.story.core.Constants.EMPTY_STRING
+import id.andiwijaya.story.core.Constants.ONE_FLOAT
+import id.andiwijaya.story.core.Constants.PHOTO_ANIM_DURATION
 import id.andiwijaya.story.core.util.DateTimeUtil.convertDateAndTime
 import id.andiwijaya.story.databinding.FragmentDetailBinding
 import id.andiwijaya.story.presentation.util.hide
@@ -42,6 +45,10 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>() {
             tvDescription.text = it.description
             tvTime.text = convertDateAndTime(it.createdAt)
             context?.let { context -> Glide.with(context).load(it.photoUrl).into(ivStory) }
+            ObjectAnimator.ofFloat(ivStory, View.ALPHA, ONE_FLOAT).apply {
+                duration = PHOTO_ANIM_DURATION
+                start()
+            }
         }
     }
 

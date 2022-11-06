@@ -70,12 +70,24 @@ abstract class BaseFragment<T : ViewBinding> : Fragment() {
     protected fun pop(navDirections: NavDirections) = findNavController().navigate(
         navDirections,
         NavOptions.Builder().apply {
+            setEnterAnim(R.anim.slide_in_left)
+            setExitAnim(R.anim.slide_out_right)
+            setPopEnterAnim(R.anim.slide_in_right)
+            setPopExitAnim(R.anim.slide_out_left)
             setPopUpTo(R.id.nav_graph, true)
             setLaunchSingleTop(true)
         }.build()
     )
 
-    protected fun goTo(navDirections: NavDirections) = findNavController().navigate(navDirections)
+    protected fun goTo(navDirections: NavDirections) = findNavController().navigate(
+        navDirections,
+        NavOptions.Builder().apply {
+            setEnterAnim(R.anim.slide_in_right)
+            setExitAnim(R.anim.slide_out_left)
+            setPopEnterAnim(R.anim.slide_in_left)
+            setPopExitAnim(R.anim.slide_out_right)
+        }.build()
+    )
 
     protected fun back() = findNavController().navigateUp()
 

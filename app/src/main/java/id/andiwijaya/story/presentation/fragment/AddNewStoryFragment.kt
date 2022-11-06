@@ -57,7 +57,7 @@ class AddNewStoryFragment : BaseFragment<FragmentAddNewStoryBinding>() {
             showErrorDialog(it.message)
         }) {
             btAddStory.isLoading(false)
-            goTo(AddNewStoryFragmentDirections.actionAddNewStoryToHome())
+            back()
         }
     }
 

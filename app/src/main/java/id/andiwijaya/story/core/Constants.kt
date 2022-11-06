@@ -35,5 +35,7 @@ object Constants {
     const val DOT_JPG = ".jpg"
     const val BYTE_MULTIPLIER = 1024
     const val MULTIPART_BODY_NAME = "photo"
+    const val ONE_FLOAT = 1f
+    const val PHOTO_ANIM_DURATION = 500L
 
 }
