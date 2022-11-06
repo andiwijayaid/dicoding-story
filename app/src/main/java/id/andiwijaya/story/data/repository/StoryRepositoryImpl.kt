@@ -37,8 +37,7 @@ class StoryRepositoryImpl @Inject constructor(
     )
 
     override fun register(request: RegisterRequest): Flow<Result<RegisterResult>> = resultFlow(
-        networkCall = { remoteDataSource.register(request).mapToDomain { toRegisterResult() } },
-        saveCallResult = {}
+        networkCall = { remoteDataSource.register(request).mapToDomain { toRegisterResult() } }
     )
 
     override fun getStories(page: Int, size: Int?, location: Int?) = Pager(
@@ -47,17 +46,14 @@ class StoryRepositoryImpl @Inject constructor(
     ).flow
 
     override fun getStory(id: String): Flow<Result<Story>> = resultFlow(
-        networkCall = { remoteDataSource.getStory(id).mapToDomain { toStory() } },
-        saveCallResult = {}
+        networkCall = { remoteDataSource.getStory(id).mapToDomain { toStory() } }
     )
 
-    override fun postStory(photo: MultipartBody.Part, description: RequestBody) =
-        resultFlow(
-            networkCall = {
-                remoteDataSource.postStory(photo, description).mapToDomain { toGenericResult() }
-            },
-            saveCallResult = {}
-        )
+    override fun postStory(photo: MultipartBody.Part, description: RequestBody) = resultFlow(
+        networkCall = {
+            remoteDataSource.postStory(photo, description).mapToDomain { toGenericResult() }
+        }
+    )
 
     override fun loadToken(): String = localDataSource.loadToken()
 

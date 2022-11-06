@@ -18,7 +18,6 @@ class CommonHeaderInterceptor @Inject constructor(
         return chain.proceed(request.build())
     }
 
-    // temp value
     private fun Request.Builder.appendAuthorization(): Request.Builder = this.addHeader(
         AUTHORIZATION,
         "$BEARER ${securePrefManager.getString(PREF_KEY_TOKEN).orEmpty()}"

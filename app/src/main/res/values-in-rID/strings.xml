@@ -2,7 +2,6 @@
 <resources>
     <string name="register">Daftar</string>
     <string name="do_not_have_an_account">Belum punya akun?</string>
-    <string name="already_have_an_account">Sudah punya akun?</string>
     <string name="name">Nama</string>
     <string name="confirm_password">Konfirmasi Password</string>
     <string name="wrong_email_or_password">Email atau Password Anda salah</string>

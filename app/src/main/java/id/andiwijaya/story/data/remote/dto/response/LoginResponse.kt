@@ -10,5 +10,9 @@ data class LoginResponse(
 )
 
 fun LoginResponse.toLoginResult() = LoginResult(
-    error, message, loginResult?.userId.orEmpty(), loginResult?.name.orEmpty(), loginResult?.token.orEmpty()
+    error,
+    message,
+    loginResult?.userId.orEmpty(),
+    loginResult?.name.orEmpty(),
+    loginResult?.token.orEmpty()
 )

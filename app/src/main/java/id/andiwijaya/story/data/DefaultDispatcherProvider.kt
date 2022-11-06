@@ -1,3 +1,0 @@
-package id.andiwijaya.story.data
-
-class DefaultDispatcherProvider: CoroutineDispatcherProvider

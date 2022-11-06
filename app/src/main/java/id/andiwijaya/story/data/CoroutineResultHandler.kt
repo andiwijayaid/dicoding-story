@@ -5,9 +5,9 @@ import id.andiwijaya.story.core.Status
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-inline fun <A> resultFlow(
-    crossinline networkCall: suspend () -> Result<A>,
-    crossinline saveCallResult: suspend (A) -> Unit
+fun <A> resultFlow(
+    networkCall: suspend () -> Result<A>,
+    saveCallResult: suspend (A) -> Unit? = {}
 ): Flow<Result<A>> = flow {
     emit(Result.Loading())
     val response = networkCall()

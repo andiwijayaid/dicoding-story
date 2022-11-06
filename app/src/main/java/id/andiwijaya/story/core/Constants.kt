@@ -24,6 +24,7 @@ object Constants {
     }
 
     const val ZERO = 0
+    const val ZERO_LONG = 0L
     const val ONE = 1
     const val FIVE = 5
     const val EMPTY_STRING = ""
@@ -37,5 +38,8 @@ object Constants {
     const val MULTIPART_BODY_NAME = "photo"
     const val ONE_FLOAT = 1f
     const val PHOTO_ANIM_DURATION = 500L
+    const val SECONDS_IN_MINUTE = 60
+    const val MINUTES_IN_HOUR = 60
+    const val HOURS_IN_A_DAY = 24
 
 }

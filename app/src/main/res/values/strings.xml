@@ -5,7 +5,6 @@
         translatable="false">Login</string>
     <string name="register">Register</string>
     <string name="do_not_have_an_account">Don\'t have an account?</string>
-    <string name="already_have_an_account">Already have an account?</string>
     <string name="name">Name</string>
     <string name="email"
         translatable="false">Email</string>
