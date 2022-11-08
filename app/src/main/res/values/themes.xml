@@ -67,7 +67,8 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="ErrorTitleStyle" parent="TextBold">
+    <style name="ErrorTitleStyle"
+        parent="TextBold">
         <item name="android:textSize">18sp</item>
     </style>
 

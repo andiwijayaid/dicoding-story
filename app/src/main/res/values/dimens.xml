@@ -54,11 +54,11 @@
     <dimen name="detail_name_margin_top">8dp</dimen>
     <dimen name="detail_description_margin_horizontal">16dp</dimen>
     <dimen name="detail_description_margin_top">8dp</dimen>
+    <dimen name="detail_image_height">500dp</dimen>
     <dimen name="detail_image_margin_horizontal">16dp</dimen>
     <dimen name="detail_image_margin_top">8dp</dimen>
     <dimen name="detail_time_margin_horizontal">16dp</dimen>
     <dimen name="detail_time_margin_top">8dp</dimen>
-    <dimen name="detail_time_margin_bottom">24dp</dimen>
     <dimen name="item_story_padding_vertical">14dp</dimen>
     <dimen name="item_story_name_margin_horizontal">14dp</dimen>
     <dimen name="item_story_time_margin_start">8dp</dimen>

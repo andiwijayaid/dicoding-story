@@ -24,12 +24,22 @@
 
             <TextView
                 android:id="@+id/tv_detail_name"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/zero_dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/detail_name_margin_horizontal"
                 android:layout_marginTop="@dimen/detail_name_margin_top"
                 android:theme="@style/userName"
+                app:layout_constraintEnd_toEndOf="@id/tv_detail_time"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_detail_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/detail_time_margin_horizontal"
+                android:layout_marginTop="@dimen/detail_time_margin_top"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -39,48 +49,20 @@
                 android:layout_marginHorizontal="@dimen/detail_description_margin_horizontal"
                 android:layout_marginTop="@dimen/detail_description_margin_top"
                 android:theme="@style/description"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_detail_name" />
 
-            <androidx.appcompat.widget.AppCompatImageView
+            <ImageView
                 android:id="@+id/iv_detail_story"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/detail_image_height"
                 android:layout_marginHorizontal="@dimen/detail_image_margin_horizontal"
                 android:layout_marginTop="@dimen/detail_image_margin_top"
                 android:adjustViewBounds="true"
-                android:alpha="0"
-                android:scaleType="fitCenter"
+                android:contentDescription="@string/image"
+                android:scaleType="fitStart"
                 app:layout_constraintTop_toBottomOf="@id/tv_detail_description" />
-
-            <TextView
-                android:id="@+id/tv_detail_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/detail_time_margin_horizontal"
-                android:layout_marginTop="@dimen/detail_time_margin_top"
-                android:layout_marginBottom="@dimen/detail_time_margin_bottom"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_detail_story"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <androidx.constraintlayout.widget.Group
-                android:id="@+id/clg_story_detail_content"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                app:constraint_referenced_ids="tv_detail_name, tv_detail_time, iv_detail_story, tv_detail_description" />
-
-            <ProgressBar
-                android:id="@+id/pb_story_detail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:indeterminateTint="@color/main_color"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

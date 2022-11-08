@@ -13,10 +13,6 @@ object Constants {
         const val PREF_KEY_TOKEN = "token"
     }
 
-    object Argument {
-        const val ARG_KEY_ID = "id"
-    }
-
     object DateFormat {
         const val RESPONSE_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         const val DATE_TIME_SHORT_FORMAT = "HH.mm · dd/MM/yy"
@@ -36,8 +32,6 @@ object Constants {
     const val DOT_JPG = ".jpg"
     const val BYTE_MULTIPLIER = 1024
     const val MULTIPART_BODY_NAME = "photo"
-    const val ONE_FLOAT = 1f
-    const val PHOTO_ANIM_DURATION = 500L
     const val SECONDS_IN_MINUTE = 60
     const val MINUTES_IN_HOUR = 60
     const val HOURS_IN_A_DAY = 24

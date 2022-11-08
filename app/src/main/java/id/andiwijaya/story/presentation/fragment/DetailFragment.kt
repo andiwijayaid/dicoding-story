@@ -1,55 +1,47 @@
 package id.andiwijaya.story.presentation.fragment
 
-import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import id.andiwijaya.story.core.BaseFragment
-import id.andiwijaya.story.core.Constants.Argument.ARG_KEY_ID
-import id.andiwijaya.story.core.Constants.EMPTY_STRING
-import id.andiwijaya.story.core.Constants.ONE_FLOAT
-import id.andiwijaya.story.core.Constants.PHOTO_ANIM_DURATION
 import id.andiwijaya.story.core.util.DateTimeUtil.convertDateAndTime
 import id.andiwijaya.story.databinding.FragmentDetailBinding
-import id.andiwijaya.story.presentation.util.hide
-import id.andiwijaya.story.presentation.util.show
 import id.andiwijaya.story.presentation.viewmodel.DetailViewModel
 
 @AndroidEntryPoint
 class DetailFragment : BaseFragment<FragmentDetailBinding>() {
 
     private val viewModel by viewModels<DetailViewModel>()
+    private val args: DetailFragmentArgs by navArgs()
 
     override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
         FragmentDetailBinding.inflate(inflater, container, false)
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedElementEnterTransition =
+            TransitionInflater.from(context).inflateTransition(android.R.transition.move)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         super.onViewCreated(view, savedInstanceState)
-        stbDetail.setNavigationOnClickListener { back() }
-        viewModel.getStory(arguments?.getString(ARG_KEY_ID, EMPTY_STRING).orEmpty())
-        observeDataFlow(viewModel.story, onLoad = {
-            clgStoryDetailContent.hide()
-            pbStoryDetail.show()
-        }, onError = {
-            clgStoryDetailContent.hide()
-            pbStoryDetail.hide()
-            showErrorDialog { back() }
-        }) {
-            clgStoryDetailContent.show()
-            pbStoryDetail.hide()
-            tvDetailName.text = it.name
-            tvDetailDescription.text = it.description
-            tvDetailTime.text = convertDateAndTime(it.createdAt)
-            context?.let { context -> Glide.with(context).load(it.photoUrl).into(ivDetailStory) }
-            ObjectAnimator.ofFloat(ivDetailStory, View.ALPHA, ONE_FLOAT).apply {
-                duration = PHOTO_ANIM_DURATION
-                start()
-            }
+
+        viewModel.processArgs(args)
+        ViewCompat.setTransitionName(ivDetailStory, viewModel.story?.id.orEmpty())
+        tvDetailName.text = viewModel.story?.name.orEmpty()
+        tvDetailDescription.text = viewModel.story?.description.orEmpty()
+        tvDetailTime.text = convertDateAndTime(viewModel.story?.createdAt.orEmpty())
+        context?.let { context ->
+            Glide.with(context).load(viewModel.story?.photoUrl).into(ivDetailStory)
         }
+        stbDetail.setNavigationOnClickListener { back() }
     }
 
 }

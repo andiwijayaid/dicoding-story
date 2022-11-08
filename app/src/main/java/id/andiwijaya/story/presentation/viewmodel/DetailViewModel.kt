@@ -1,22 +1,19 @@
 package id.andiwijaya.story.presentation.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import id.andiwijaya.story.core.BaseViewModel
-import id.andiwijaya.story.core.Result
 import id.andiwijaya.story.domain.model.Story
-import id.andiwijaya.story.domain.usecase.get.GetStoryUseCase
+import id.andiwijaya.story.presentation.fragment.DetailFragmentArgs
 import javax.inject.Inject
 
 @HiltViewModel
-class DetailViewModel @Inject constructor(
-    private val getStoryUseCase: GetStoryUseCase
-) : BaseViewModel() {
+class DetailViewModel @Inject constructor() : BaseViewModel() {
 
-    private val _story = MutableLiveData<Result<Story>>()
-    val story: LiveData<Result<Story>> = _story
+    var story: Story? = null
+        private set
 
-    fun getStory(id: String) = collectFlow(getStoryUseCase(id), _story)
+    fun processArgs(arguments: DetailFragmentArgs) {
+        story = arguments.story
+    }
 
 }

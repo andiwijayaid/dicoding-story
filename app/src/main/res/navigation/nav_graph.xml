@@ -70,9 +70,9 @@
         tools:layout="@layout/fragment_detail">
 
         <argument
-            android:name="id"
-            android:defaultValue=""
-            app:argType="string" />
+            android:name="story"
+            app:argType="id.andiwijaya.story.domain.model.Story"
+            app:nullable="true" />
 
         <action
             android:id="@+id/action_detail_to_home"

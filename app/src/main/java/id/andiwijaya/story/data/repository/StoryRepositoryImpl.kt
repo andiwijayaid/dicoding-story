@@ -10,14 +10,12 @@ import id.andiwijaya.story.data.remote.dto.request.RegisterRequest
 import id.andiwijaya.story.data.remote.dto.response.toGenericResult
 import id.andiwijaya.story.data.remote.dto.response.toLoginResult
 import id.andiwijaya.story.data.remote.dto.response.toRegisterResult
-import id.andiwijaya.story.data.remote.dto.response.toStory
 import id.andiwijaya.story.data.remote.service.StoryPagingSource
 import id.andiwijaya.story.data.remote.service.StoryRemoteDataSource
 import id.andiwijaya.story.data.resultFlow
 import id.andiwijaya.story.data.util.ConverterDataUtils.mapToDomain
 import id.andiwijaya.story.domain.model.LoginResult
 import id.andiwijaya.story.domain.model.RegisterResult
-import id.andiwijaya.story.domain.model.Story
 import id.andiwijaya.story.domain.repository.StoryRepository
 import kotlinx.coroutines.flow.Flow
 import okhttp3.MultipartBody
@@ -44,10 +42,6 @@ class StoryRepositoryImpl @Inject constructor(
         pagingSourceFactory = { StoryPagingSource(remoteDataSource) },
         config = PagingConfig(pageSize = DEFAULT_PAGE_SIZE)
     ).flow
-
-    override fun getStory(id: String): Flow<Result<Story>> = resultFlow(
-        networkCall = { remoteDataSource.getStory(id).mapToDomain { toStory() } }
-    )
 
     override fun postStory(photo: MultipartBody.Part, description: RequestBody) = resultFlow(
         networkCall = {

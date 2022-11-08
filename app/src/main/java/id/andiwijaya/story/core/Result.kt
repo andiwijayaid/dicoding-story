@@ -12,6 +12,7 @@ sealed class Result<T>(
         data: T? = null,
         code: Int? = null
     ) : Result<T>(Status.ERROR, data, message, code)
+
     class Loading<T> : Result<T>(Status.LOADING, null)
 }
 

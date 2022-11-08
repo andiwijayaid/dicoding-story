@@ -2,6 +2,8 @@ package id.andiwijaya.story.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.core.view.ViewCompat
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -11,17 +13,21 @@ import id.andiwijaya.story.domain.model.Story
 import id.andiwijaya.story.presentation.util.StoryDiffCallback
 
 class StoryAdapter(
-    private val onItemSelected: (String) -> Unit
+    private val onItemSelected: (Story, ImageView) -> Unit
 ) : PagingDataAdapter<Story, StoryAdapter.ViewHolder>(StoryDiffCallback) {
 
-    class ViewHolder(private val binding: ItemStoryBinding, val onItemSelected: (String) -> Unit) :
+    class ViewHolder(
+        private val binding: ItemStoryBinding,
+        val onItemSelected: (Story, ImageView) -> Unit
+    ) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(story: Story) = with(binding) {
             tvItemName.text = story.name
             tvItemTime.text = timeDifference(story.createdAt, root.context)
             tvItemDescription.text = story.description
+            ViewCompat.setTransitionName(ivItemPhoto, story.id)
             Glide.with(root.context).load(story.photoUrl).into(ivItemPhoto)
-            container.setOnClickListener { onItemSelected(story.id) }
+            container.setOnClickListener { onItemSelected(story, ivItemPhoto) }
         }
     }
 

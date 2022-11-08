@@ -24,7 +24,7 @@
     <string name="password_is_not_match">Password is not match</string>
     <string name="registration_success">Registration Successful</string>
     <string name="registration_success_desc">Your account has been created successfully. You can login now.</string>
-    <string name="min_n_char">Min. %d character</string>
+    <string name="min_n_char">Min. %d characters</string>
     <string name="second_format">%ds</string>
     <string name="minute_format">%dm</string>
     <string name="hour_format">%dh</string>
@@ -40,4 +40,5 @@
     <string name="camera">Camera</string>
     <string name="icon">icon</string>
     <string name="reload">Reload</string>
+    <string name="image">image</string>
 </resources>

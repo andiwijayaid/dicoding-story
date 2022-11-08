@@ -5,8 +5,8 @@ import id.andiwijaya.story.core.Constants.DEFAULT_PAGE_SIZE
 import id.andiwijaya.story.core.Result
 import id.andiwijaya.story.data.remote.dto.request.LoginRequest
 import id.andiwijaya.story.data.remote.dto.request.RegisterRequest
-import id.andiwijaya.story.domain.model.LoginResult
 import id.andiwijaya.story.domain.model.GenericResult
+import id.andiwijaya.story.domain.model.LoginResult
 import id.andiwijaya.story.domain.model.RegisterResult
 import id.andiwijaya.story.domain.model.Story
 import kotlinx.coroutines.flow.Flow
@@ -21,10 +21,11 @@ interface StoryRepository {
         size: Int? = DEFAULT_PAGE_SIZE,
         location: Int? = null
     ): Flow<PagingData<Story>>
-    fun getStory(id: String): Flow<Result<Story>>
+
     fun postStory(
         photo: MultipartBody.Part, description: RequestBody
     ): Flow<Result<GenericResult>>
+
     fun loadToken(): String
     fun removeToken()
 }

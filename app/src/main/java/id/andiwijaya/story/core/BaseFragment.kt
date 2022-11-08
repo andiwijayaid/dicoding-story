@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavDirections
 import androidx.navigation.NavOptions
+import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import com.karumi.dexter.Dexter
@@ -88,6 +89,10 @@ abstract class BaseFragment<T : ViewBinding> : Fragment() {
             setPopExitAnim(R.anim.slide_out_right)
         }.build()
     )
+
+    protected fun navigateWithExtras(
+        navDirections: NavDirections, extras: FragmentNavigator.Extras
+    ) = findNavController().navigate(navDirections, extras)
 
     protected fun back() = findNavController().navigateUp()
 

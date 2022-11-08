@@ -34,11 +34,12 @@
         android:theme="@style/description"
         app:layout_constraintTop_toBottomOf="@id/tv_item_name" />
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <ImageView
         android:id="@+id/iv_item_photo"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_story_image_height"
         android:layout_marginTop="@dimen/item_story_image_margin_top"
+        android:contentDescription="@string/image"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

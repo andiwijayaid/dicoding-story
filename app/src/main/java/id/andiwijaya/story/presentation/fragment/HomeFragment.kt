@@ -9,6 +9,7 @@ import androidx.core.view.MenuProvider
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,16 +31,26 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private val viewModel by viewModels<HomeViewModel>()
 
     private val adapter by lazy {
-        StoryAdapter { goTo(HomeFragmentDirections.actionHomeToDetail(it)) }
+        StoryAdapter { story, imageView ->
+            navigateWithExtras(
+                HomeFragmentDirections.actionHomeToDetail(story),
+                FragmentNavigatorExtras(imageView to story.id)
+            )
+        }
     }
 
     override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
         FragmentHomeBinding.inflate(inflater, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
-        rvStory.addItemDecoration(
-            DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-        )
+        rvStory.apply {
+            postponeEnterTransition()
+            viewTreeObserver.addOnPreDrawListener {
+                startPostponedEnterTransition()
+                true
+            }
+        }
+        rvStory.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         rvStory.adapter = adapter.withLoadStateFooter(
             footer = StoryLoadStateAdapter { viewModel.getStories(ONE) }
         )
