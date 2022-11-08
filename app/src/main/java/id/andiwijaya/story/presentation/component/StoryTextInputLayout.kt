@@ -4,10 +4,8 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.postOnAnimationDelayed
 import androidx.core.widget.addTextChangedListener
 import id.andiwijaya.story.R
-import id.andiwijaya.story.core.Constants.MIN_CHAR_ERROR_DELAY_IN_MILLIS
 import id.andiwijaya.story.core.Constants.ZERO
 import id.andiwijaya.story.databinding.ComponentStoryTextInputLayoutBinding
 import id.andiwijaya.story.presentation.util.hide
@@ -57,12 +55,9 @@ class StoryTextInputLayout @JvmOverloads constructor(
     private fun setEditTextChangedListener() = with(binding) {
         textInputEditText.addTextChangedListener {
             textInputLayout.isErrorEnabled = false
-            postOnAnimationDelayed(MIN_CHAR_ERROR_DELAY_IN_MILLIS) {
-                binding.textInputEditText.error =
-                    if (text.length < minChar && text.length != ZERO) {
-                        context.getString(R.string.min_n_char, minChar)
-                    } else null
-            }
+            binding.textInputEditText.error = if (text.length < minChar && text.length != ZERO) {
+                context.getString(R.string.min_n_char, minChar)
+            } else null
         }
     }
 

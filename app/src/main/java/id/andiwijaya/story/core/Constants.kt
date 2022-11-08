@@ -24,7 +24,6 @@ object Constants {
     const val ONE = 1
     const val FIVE = 5
     const val EMPTY_STRING = ""
-    const val MIN_CHAR_ERROR_DELAY_IN_MILLIS = 1500L
     const val DEFAULT_PAGE_SIZE = 20
     const val INITIAL_COMPRESS_QUALITY = 100
     const val MAX_STREAM_LENGTH = 1000000
