@@ -13,10 +13,12 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import id.andiwijaya.story.BuildConfig
 import id.andiwijaya.story.R
 import id.andiwijaya.story.core.Constants.ONE
+import id.andiwijaya.story.core.Constants.ZERO
 import id.andiwijaya.story.core.PermissionsListener
 import id.andiwijaya.story.core.base.BaseFragment
 import id.andiwijaya.story.databinding.FragmentHomeBinding
@@ -43,6 +45,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         FragmentHomeBinding.inflate(inflater, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
+        viewModel.getStories(ONE)
         rvStory.apply {
             postponeEnterTransition()
             viewTreeObserver.addOnPreDrawListener {
@@ -58,9 +61,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         viewModel.stories.observe(viewLifecycleOwner) {
             lifecycleScope.launch { adapter.submitData(it) }
         }
-        srlStory.setOnRefreshListener {
-            adapter.refresh()
-        }
+        adapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
+            override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
+                rvStory.smoothScrollToPosition(ZERO)
+            }
+        })
+        srlStory.setOnRefreshListener { adapter.refresh() }
         adapter.addLoadStateListener {
             srlStory.isRefreshing = it.refresh is LoadState.Loading
             tvHomeReload.isVisible = it.refresh is LoadState.Error

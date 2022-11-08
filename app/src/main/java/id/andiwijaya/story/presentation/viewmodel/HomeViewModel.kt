@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import dagger.hilt.android.lifecycle.HiltViewModel
-import id.andiwijaya.story.core.Constants.ONE
 import id.andiwijaya.story.core.base.BaseViewModel
 import id.andiwijaya.story.domain.model.Story
 import id.andiwijaya.story.domain.usecase.get.GetStoriesUseCase
@@ -21,10 +20,6 @@ class HomeViewModel @Inject constructor(
 
     private val _stories = MutableLiveData<PagingData<Story>>()
     val stories: LiveData<PagingData<Story>> = _stories
-
-    init {
-        getStories(ONE)
-    }
 
     fun getStories(page: Int, size: Int? = null, location: Int? = null) = collectFlow(
         getStoriesUseCase(page, size, location).cachedIn(viewModelScope), _stories
