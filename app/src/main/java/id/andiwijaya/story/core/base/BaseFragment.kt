@@ -1,6 +1,8 @@
 package id.andiwijaya.story.core.base
 
 import android.Manifest
+import android.os.Build
+import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -188,22 +190,27 @@ abstract class BaseFragment<T : ViewBinding> : Fragment() {
         }
     }
 
-    protected fun askPermissions(listener: PermissionsListener) = Dexter.withContext(context)
-        .withPermissions(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE)
-        .withListener(object : MultiplePermissionsListener {
-            override fun onPermissionsChecked(p0: MultiplePermissionsReport?) {
-                if (p0?.areAllPermissionsGranted().orFalse()) {
-                    listener.onPermissionsGranted()
-                } else listener.onPermissionsDenied()
-            }
+    protected fun askPermissions(listener: PermissionsListener) {
+        val permissions = if (SDK_INT >= Build.VERSION_CODES.R) {
+            listOf(Manifest.permission.CAMERA)
+        } else listOf(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE)
+        Dexter.withContext(context)
+            .withPermissions(permissions)
+            .withListener(object : MultiplePermissionsListener {
+                override fun onPermissionsChecked(p0: MultiplePermissionsReport?) {
+                    if (p0?.areAllPermissionsGranted().orFalse()) {
+                        listener.onPermissionsGranted()
+                    } else listener.onPermissionsDenied()
+                }
 
-            override fun onPermissionRationaleShouldBeShown(
-                p0: MutableList<PermissionRequest>?,
-                p1: PermissionToken?
-            ) {
-                p1?.continuePermissionRequest()
-            }
-        })
-        .withErrorListener { listener.onPermissionsDenied() }
-        .check()
+                override fun onPermissionRationaleShouldBeShown(
+                    p0: MutableList<PermissionRequest>?,
+                    p1: PermissionToken?
+                ) {
+                    p1?.continuePermissionRequest()
+                }
+            })
+            .withErrorListener { listener.onPermissionsDenied() }
+            .check()
+    }
 }
