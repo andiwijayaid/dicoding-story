@@ -1,4 +1,4 @@
-package id.andiwijaya.story.core
+package id.andiwijaya.story
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

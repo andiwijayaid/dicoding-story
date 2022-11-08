@@ -1,7 +1,7 @@
 package id.andiwijaya.story.presentation.viewmodel
 
 import dagger.hilt.android.lifecycle.HiltViewModel
-import id.andiwijaya.story.core.BaseViewModel
+import id.andiwijaya.story.core.base.BaseViewModel
 import id.andiwijaya.story.domain.model.Story
 import id.andiwijaya.story.presentation.fragment.DetailFragmentArgs
 import javax.inject.Inject

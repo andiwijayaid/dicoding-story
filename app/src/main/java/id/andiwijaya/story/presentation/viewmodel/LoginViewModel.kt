@@ -3,9 +3,9 @@ package id.andiwijaya.story.presentation.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
-import id.andiwijaya.story.core.BaseViewModel
 import id.andiwijaya.story.core.Constants.EMPTY_STRING
 import id.andiwijaya.story.core.Result
+import id.andiwijaya.story.core.base.BaseViewModel
 import id.andiwijaya.story.data.remote.dto.request.LoginRequest
 import id.andiwijaya.story.domain.model.LoginResult
 import id.andiwijaya.story.domain.usecase.post.LoginUseCase

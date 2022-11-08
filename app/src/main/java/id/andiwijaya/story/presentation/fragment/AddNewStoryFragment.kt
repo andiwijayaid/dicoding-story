@@ -17,7 +17,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import id.andiwijaya.story.BuildConfig
-import id.andiwijaya.story.core.BaseFragment
+import id.andiwijaya.story.core.base.BaseFragment
 import id.andiwijaya.story.core.util.FileUtil.createCustomTempFile
 import id.andiwijaya.story.core.util.FileUtil.reduceFileImage
 import id.andiwijaya.story.core.util.FileUtil.toMultiBodyPart

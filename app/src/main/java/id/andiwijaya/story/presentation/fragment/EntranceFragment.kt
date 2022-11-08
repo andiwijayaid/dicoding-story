@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavDirections
 import dagger.hilt.android.AndroidEntryPoint
-import id.andiwijaya.story.core.BaseFragment
+import id.andiwijaya.story.core.base.BaseFragment
 import id.andiwijaya.story.databinding.FragmentEntranceBinding
 import id.andiwijaya.story.presentation.viewmodel.EntranceViewModel
 

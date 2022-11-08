@@ -1,4 +1,4 @@
-package id.andiwijaya.story.core
+package id.andiwijaya.story.core.base
 
 import android.Manifest
 import android.os.Bundle
@@ -19,6 +19,9 @@ import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import id.andiwijaya.story.R
+import id.andiwijaya.story.core.PermissionsListener
+import id.andiwijaya.story.core.Result
+import id.andiwijaya.story.core.Status
 import id.andiwijaya.story.core.util.orFalse
 import id.andiwijaya.story.presentation.component.StoryBottomDialog
 

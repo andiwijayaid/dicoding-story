@@ -3,9 +3,9 @@ package id.andiwijaya.story.presentation.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
-import id.andiwijaya.story.core.BaseViewModel
 import id.andiwijaya.story.core.Constants.EMPTY_STRING
 import id.andiwijaya.story.core.Result
+import id.andiwijaya.story.core.base.BaseViewModel
 import id.andiwijaya.story.data.remote.dto.request.RegisterRequest
 import id.andiwijaya.story.domain.model.RegisterResult
 import id.andiwijaya.story.domain.usecase.post.RegisterUseCase

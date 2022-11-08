@@ -1,4 +1,4 @@
-package id.andiwijaya.story.core
+package id.andiwijaya.story.core.base
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

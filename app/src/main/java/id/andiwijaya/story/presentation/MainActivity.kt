@@ -1,4 +1,4 @@
-package id.andiwijaya.story.core
+package id.andiwijaya.story.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

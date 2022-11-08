@@ -1,7 +1,8 @@
-package id.andiwijaya.story.core
+package id.andiwijaya.story.core.base
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import id.andiwijaya.story.core.Result
 import id.andiwijaya.story.data.remote.dto.response.GenericResponse
 import retrofit2.HttpException
 import retrofit2.Response

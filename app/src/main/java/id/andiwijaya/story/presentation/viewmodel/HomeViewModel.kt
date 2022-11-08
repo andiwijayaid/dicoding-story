@@ -6,8 +6,8 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import dagger.hilt.android.lifecycle.HiltViewModel
-import id.andiwijaya.story.core.BaseViewModel
 import id.andiwijaya.story.core.Constants.ONE
+import id.andiwijaya.story.core.base.BaseViewModel
 import id.andiwijaya.story.domain.model.Story
 import id.andiwijaya.story.domain.usecase.get.GetStoriesUseCase
 import id.andiwijaya.story.domain.usecase.remove.RemoveTokenUseCase

@@ -1,7 +1,7 @@
 package id.andiwijaya.story.data.remote.service
 
-import id.andiwijaya.story.core.BaseDataSource
 import id.andiwijaya.story.core.Result
+import id.andiwijaya.story.core.base.BaseDataSource
 import id.andiwijaya.story.data.remote.api.StoryApi
 import id.andiwijaya.story.data.remote.dto.request.LoginRequest
 import id.andiwijaya.story.data.remote.dto.request.RegisterRequest

@@ -16,9 +16,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import id.andiwijaya.story.BuildConfig
 import id.andiwijaya.story.R
-import id.andiwijaya.story.core.BaseFragment
 import id.andiwijaya.story.core.Constants.ONE
 import id.andiwijaya.story.core.PermissionsListener
+import id.andiwijaya.story.core.base.BaseFragment
 import id.andiwijaya.story.databinding.FragmentHomeBinding
 import id.andiwijaya.story.presentation.adapter.StoryAdapter
 import id.andiwijaya.story.presentation.adapter.StoryLoadStateAdapter

@@ -8,7 +8,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import id.andiwijaya.story.R
-import id.andiwijaya.story.core.BaseFragment
+import id.andiwijaya.story.core.base.BaseFragment
 import id.andiwijaya.story.databinding.FragmentRegistrationBinding
 import id.andiwijaya.story.presentation.viewmodel.RegistrationViewModel
 

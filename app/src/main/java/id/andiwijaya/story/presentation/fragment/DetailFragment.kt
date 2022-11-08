@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
-import id.andiwijaya.story.core.BaseFragment
+import id.andiwijaya.story.core.base.BaseFragment
 import id.andiwijaya.story.core.util.DateTimeUtil.convertDateAndTime
 import id.andiwijaya.story.databinding.FragmentDetailBinding
 import id.andiwijaya.story.presentation.viewmodel.DetailViewModel
