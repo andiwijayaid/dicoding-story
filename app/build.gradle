@@ -34,6 +34,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+        freeCompilerArgs += ["-Xopt-in=kotlin.RequiresOptIn"]
     }
 
     buildFeatures {
@@ -83,6 +84,11 @@ dependencies {
     // ThreeTenABP
     implementation "com.jakewharton.threetenabp:threetenabp:$three_ten_abp_version"
 
-    //
+    // Permission
     implementation "com.karumi:dexter:$dexter_version"
+
+    // Room
+    implementation "androidx.room:room-ktx:$room_version"
+    implementation "androidx.room:room-paging:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
 }

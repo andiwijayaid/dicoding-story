@@ -8,7 +8,6 @@ import android.view.*
 import androidx.core.view.MenuProvider
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -17,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import id.andiwijaya.story.BuildConfig
 import id.andiwijaya.story.R
-import id.andiwijaya.story.core.Constants.ONE
 import id.andiwijaya.story.core.Constants.ZERO
 import id.andiwijaya.story.core.PermissionsListener
 import id.andiwijaya.story.core.base.BaseFragment
@@ -25,7 +23,6 @@ import id.andiwijaya.story.databinding.FragmentHomeBinding
 import id.andiwijaya.story.presentation.adapter.StoryAdapter
 import id.andiwijaya.story.presentation.adapter.StoryLoadStateAdapter
 import id.andiwijaya.story.presentation.viewmodel.HomeViewModel
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
@@ -44,8 +41,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
         FragmentHomeBinding.inflate(inflater, container, false)
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.getStories()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
-        viewModel.getStories(ONE)
         rvStory.apply {
             postponeEnterTransition()
             viewTreeObserver.addOnPreDrawListener {
@@ -55,11 +56,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         }
         rvStory.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         rvStory.adapter = adapter.withLoadStateFooter(
-            footer = StoryLoadStateAdapter { viewModel.getStories(ONE) }
+            footer = StoryLoadStateAdapter { viewModel.getStories() }
         )
         rvStory.layoutManager = LinearLayoutManager(context)
         viewModel.stories.observe(viewLifecycleOwner) {
-            lifecycleScope.launch { adapter.submitData(it) }
+            adapter.submitData(lifecycle, it)
         }
         adapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
             override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {

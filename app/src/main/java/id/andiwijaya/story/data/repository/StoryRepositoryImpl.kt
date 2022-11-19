@@ -1,16 +1,18 @@
 package id.andiwijaya.story.data.repository
 
+import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import id.andiwijaya.story.core.Constants.DEFAULT_PAGE_SIZE
 import id.andiwijaya.story.core.Result
+import id.andiwijaya.story.core.StoryDatabase
 import id.andiwijaya.story.data.local.StoryLocalDataSource
+import id.andiwijaya.story.data.mediator.StoryRemoteMediator
 import id.andiwijaya.story.data.remote.dto.request.LoginRequest
 import id.andiwijaya.story.data.remote.dto.request.RegisterRequest
 import id.andiwijaya.story.data.remote.dto.response.toGenericResult
 import id.andiwijaya.story.data.remote.dto.response.toLoginResult
 import id.andiwijaya.story.data.remote.dto.response.toRegisterResult
-import id.andiwijaya.story.data.remote.service.StoryPagingSource
 import id.andiwijaya.story.data.remote.service.StoryRemoteDataSource
 import id.andiwijaya.story.data.resultFlow
 import id.andiwijaya.story.data.util.ConverterDataUtils.mapToDomain
@@ -25,6 +27,7 @@ import javax.inject.Singleton
 
 @Singleton
 class StoryRepositoryImpl @Inject constructor(
+    private val storyDatabase: StoryDatabase,
     private val remoteDataSource: StoryRemoteDataSource,
     private val localDataSource: StoryLocalDataSource
 ) : StoryRepository {
@@ -38,9 +41,11 @@ class StoryRepositoryImpl @Inject constructor(
         networkCall = { remoteDataSource.register(request).mapToDomain { toRegisterResult() } }
     )
 
-    override fun getStories(page: Int, size: Int?, location: Int?) = Pager(
-        pagingSourceFactory = { StoryPagingSource(remoteDataSource) },
-        config = PagingConfig(pageSize = DEFAULT_PAGE_SIZE)
+    @OptIn(ExperimentalPagingApi::class)
+    override fun getStories() = Pager(
+        config = PagingConfig(pageSize = DEFAULT_PAGE_SIZE),
+        remoteMediator = StoryRemoteMediator(storyDatabase, remoteDataSource),
+        pagingSourceFactory = { storyDatabase.storyDao().getAllStory() }
     ).flow
 
     override fun postStory(photo: MultipartBody.Part, description: RequestBody) = resultFlow(

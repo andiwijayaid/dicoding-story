@@ -7,6 +7,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import id.andiwijaya.story.core.Constants.Network.BASE_URL
 import id.andiwijaya.story.core.SecurePrefManager
+import id.andiwijaya.story.core.StoryDatabase
 import id.andiwijaya.story.data.local.StoryLocalDataSource
 import id.andiwijaya.story.data.remote.CommonHeaderInterceptor
 import id.andiwijaya.story.data.remote.api.StoryApi
@@ -59,6 +60,10 @@ object AppModule {
 
     @Singleton
     @Provides
+    fun provideStoryDatabase(application: Application) = StoryDatabase.getDatabase(application)
+
+    @Singleton
+    @Provides
     fun provideStoryLocalDataSource(securePrefManager: SecurePrefManager) =
         StoryLocalDataSource(securePrefManager)
 
@@ -69,10 +74,11 @@ object AppModule {
     @Singleton
     @Provides
     fun provideStoryRepository(
+        storyDatabase: StoryDatabase,
         remoteDataSource: StoryRemoteDataSource,
         localDataSource: StoryLocalDataSource
     ): StoryRepository {
-        return StoryRepositoryImpl(remoteDataSource, localDataSource)
+        return StoryRepositoryImpl(storyDatabase, remoteDataSource, localDataSource)
     }
 
 }

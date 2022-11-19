@@ -6,9 +6,9 @@ buildscript {
         constraint_layout_version = "2.1.4"
         junit_version = "4.13.2"
         android_junit_version = "4.13.2"
-        espresso_version = "3.4.0"
+        espresso_version = "3.5.0"
         nav_version = "2.5.3"
-        hilt_version = "2.44"
+        hilt_version = "2.44.1"
         hilt_nav_version = "1.0.0"
         retrofit_version = "2.9.0"
         okhttp_version = "4.10.0"
@@ -19,6 +19,7 @@ buildscript {
         three_ten_abp_version = "1.4.2"
         dexter_version = "6.2.3"
         swipe_refresh_layout_version = "1.1.0"
+        room_version = "2.4.3"
     }
 }
 

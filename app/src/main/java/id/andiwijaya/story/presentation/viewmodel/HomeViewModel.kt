@@ -21,9 +21,7 @@ class HomeViewModel @Inject constructor(
     private val _stories = MutableLiveData<PagingData<Story>>()
     val stories: LiveData<PagingData<Story>> = _stories
 
-    fun getStories(page: Int, size: Int? = null, location: Int? = null) = collectFlow(
-        getStoriesUseCase(page, size, location).cachedIn(viewModelScope), _stories
-    )
+    fun getStories() = collectFlow(getStoriesUseCase().cachedIn(viewModelScope), _stories)
 
     fun logOut() = removeTokenUseCase.invoke()
 

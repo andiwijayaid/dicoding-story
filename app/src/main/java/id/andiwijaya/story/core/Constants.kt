@@ -8,6 +8,10 @@ object Constants {
         const val BEARER = "Bearer"
     }
 
+    object Database {
+        const val DB_NAME = "story_database"
+    }
+
     object Preference {
         const val SECRET_PREFERENCE = "encrypted-story-preference"
         const val PREF_KEY_TOKEN = "token"
