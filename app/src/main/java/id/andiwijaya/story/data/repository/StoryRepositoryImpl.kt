@@ -48,9 +48,16 @@ class StoryRepositoryImpl @Inject constructor(
         pagingSourceFactory = { storyDatabase.storyDao().getAllStory() }
     ).flow
 
-    override fun postStory(photo: MultipartBody.Part, description: RequestBody) = resultFlow(
+    override fun postStory(
+        photo: MultipartBody.Part,
+        description: RequestBody,
+        lat: RequestBody?,
+        lon: RequestBody?
+    ) = resultFlow(
         networkCall = {
-            remoteDataSource.postStory(photo, description).mapToDomain { toGenericResult() }
+            remoteDataSource.postStory(
+                photo, description, lat, lon
+            ).mapToDomain { toGenericResult() }
         }
     )
 

@@ -1,5 +1,6 @@
 package id.andiwijaya.story.presentation.fragment
 
+import android.annotation.SuppressLint
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.content.Intent.ACTION_GET_CONTENT
@@ -15,8 +16,10 @@ import androidx.core.content.FileProvider
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.gms.location.FusedLocationProviderClient
 import dagger.hilt.android.AndroidEntryPoint
 import id.andiwijaya.story.BuildConfig
+import id.andiwijaya.story.core.PermissionsListener
 import id.andiwijaya.story.core.base.BaseFragment
 import id.andiwijaya.story.core.util.FileUtil.createCustomTempFile
 import id.andiwijaya.story.core.util.FileUtil.reduceFileImage
@@ -26,11 +29,15 @@ import id.andiwijaya.story.databinding.FragmentAddNewStoryBinding
 import id.andiwijaya.story.presentation.component.StoryMediaBottomDialog
 import id.andiwijaya.story.presentation.viewmodel.AddNewStoryViewModel
 import java.io.File
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class AddNewStoryFragment : BaseFragment<FragmentAddNewStoryBinding>() {
 
     private val viewModel by viewModels<AddNewStoryViewModel>()
+
+    @Inject
+    lateinit var fusedLocationProviderClient: FusedLocationProviderClient
 
     override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
         FragmentAddNewStoryBinding.inflate(inflater, container, false)
@@ -48,6 +55,25 @@ class AddNewStoryFragment : BaseFragment<FragmentAddNewStoryBinding>() {
         viewModel.isButtonEnable.observe(viewLifecycleOwner) {
             btAddStory.isEnabled(it)
         }
+        swLocation.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) requestPermission() else viewModel.resetLocationInformation()
+        }
+    }
+
+    private fun requestPermission() {
+        askLocationPermission(object : PermissionsListener {
+            @SuppressLint("MissingPermission")
+            override fun onPermissionsGranted() {
+                fusedLocationProviderClient.lastLocation.addOnSuccessListener {
+                    viewModel.setLocationInformation(it.latitude, it.longitude)
+                }
+            }
+
+            override fun onPermissionsDenied() {
+                binding.swLocation.isChecked = false
+                showPermissionDeniedDialog()
+            }
+        })
     }
 
     private fun observeUploadResult() = with(binding) {

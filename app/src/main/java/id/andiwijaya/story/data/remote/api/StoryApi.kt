@@ -32,7 +32,9 @@ interface StoryApi {
     @POST("stories")
     suspend fun postStory(
         @Part photo: MultipartBody.Part,
-        @Part("description") description: RequestBody
+        @Part("description") description: RequestBody,
+        @Part("lat") latitude: RequestBody? = null,
+        @Part("lon") longitude: RequestBody? = null
     ): Response<GenericResponse>
 
 }

@@ -17,7 +17,7 @@ interface StoryRepository {
     fun register(request: RegisterRequest): Flow<Result<RegisterResult>>
     fun getStories(): Flow<PagingData<Story>>
     fun postStory(
-        photo: MultipartBody.Part, description: RequestBody
+        photo: MultipartBody.Part, description: RequestBody, lat: RequestBody?, lon: RequestBody?
     ): Flow<Result<GenericResult>>
     fun loadToken(): String
     fun removeToken()

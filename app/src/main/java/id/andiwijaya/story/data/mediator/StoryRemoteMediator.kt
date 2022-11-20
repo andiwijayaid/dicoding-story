@@ -1,6 +1,5 @@
 package id.andiwijaya.story.data.mediator
 
-import android.util.Log
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
@@ -28,7 +27,6 @@ class StoryRemoteMediator @Inject constructor(
     override suspend fun initialize(): InitializeAction = InitializeAction.LAUNCH_INITIAL_REFRESH
 
     override suspend fun load(loadType: LoadType, state: PagingState<Int, Story>): MediatorResult {
-        Log.d("ASDCV", "loadType $loadType")
         val page = when (loadType) {
             LoadType.REFRESH -> getRemoteKeyClosestToCurrentPosition(state).let {
                 it?.nextKey?.minus(ONE) ?: INITIAL_PAGE_INDEX

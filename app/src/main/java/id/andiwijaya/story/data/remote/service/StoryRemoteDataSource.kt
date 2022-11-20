@@ -32,9 +32,9 @@ class StoryRemoteDataSource @Inject constructor(
     }
 
     suspend fun postStory(
-        photo: MultipartBody.Part, description: RequestBody
+        photo: MultipartBody.Part, description: RequestBody, lat: RequestBody?, lon: RequestBody?
     ): Result<GenericResponse> {
-        return getResultWithSingleObject { api.postStory(photo, description) }
+        return getResultWithSingleObject { api.postStory(photo, description, lat, lon) }
     }
 
 }

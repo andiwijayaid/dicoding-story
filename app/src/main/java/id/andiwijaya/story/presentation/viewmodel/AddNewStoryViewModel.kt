@@ -10,6 +10,7 @@ import id.andiwijaya.story.core.util.FileUtil.convertToRequestBody
 import id.andiwijaya.story.domain.model.GenericResult
 import id.andiwijaya.story.domain.usecase.post.PostStoryUseCase
 import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,14 +25,30 @@ class AddNewStoryViewModel @Inject constructor(
     var photo: MultipartBody.Part? = null
     var description = EMPTY_STRING
     var photoFromCameraPath = EMPTY_STRING
+    var lat: String? = null
+    var lon: String? = null
 
     fun postStory() = photo?.let {
-        collectFlow(postStoryUseCase(it, description.convertToRequestBody()), _genericResult)
+        collectFlow(
+            postStoryUseCase(
+                it, description.convertToRequestBody(), lat?.toRequestBody(), lon?.toRequestBody()
+            ), _genericResult
+        )
     }
 
     fun isAllFilled() = listOf(
         photo == null,
         description.isBlank()
     ).contains(true).not()
+
+    fun setLocationInformation(latitude: Double, longitude: Double) {
+        this.lat = latitude.toString()
+        this.lon = longitude.toString()
+    }
+
+    fun resetLocationInformation() {
+        lat = null
+        lon = null
+    }
 
 }

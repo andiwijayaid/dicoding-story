@@ -1,9 +1,12 @@
 package id.andiwijaya.story.core.base
 
 import android.Manifest
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,11 +23,13 @@ import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
+import id.andiwijaya.story.BuildConfig
 import id.andiwijaya.story.R
 import id.andiwijaya.story.core.PermissionsListener
 import id.andiwijaya.story.core.Result
 import id.andiwijaya.story.core.Status
 import id.andiwijaya.story.core.util.orFalse
+import id.andiwijaya.story.core.util.orTrue
 import id.andiwijaya.story.presentation.component.StoryBottomDialog
 
 
@@ -201,6 +206,43 @@ abstract class BaseFragment<T : ViewBinding> : Fragment() {
                     if (p0?.areAllPermissionsGranted().orFalse()) {
                         listener.onPermissionsGranted()
                     } else listener.onPermissionsDenied()
+                }
+
+                override fun onPermissionRationaleShouldBeShown(
+                    p0: MutableList<PermissionRequest>?,
+                    p1: PermissionToken?
+                ) {
+                    p1?.continuePermissionRequest()
+                }
+            })
+            .withErrorListener { listener.onPermissionsDenied() }
+            .check()
+    }
+
+    protected fun showPermissionDeniedDialog() = showConfirmationDialog(
+        getString(R.string.ask_permission_title),
+        getString(R.string.ask_permission_description),
+        getString(R.string.ask_permission_primary_button)
+    ) {
+        startActivity(
+            Intent(
+                Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                Uri.parse("package:${BuildConfig.APPLICATION_ID}")
+            )
+        )
+    }
+
+    protected fun askLocationPermission(listener: PermissionsListener) {
+        Dexter.withContext(context)
+            .withPermissions(
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            )
+            .withListener(object : MultiplePermissionsListener {
+                override fun onPermissionsChecked(p0: MultiplePermissionsReport?) {
+                    if (p0?.grantedPermissionResponses?.isEmpty().orTrue()) {
+                        listener.onPermissionsDenied()
+                    } else listener.onPermissionsGranted()
                 }
 
                 override fun onPermissionRationaleShouldBeShown(

@@ -1,9 +1,6 @@
 package id.andiwijaya.story.presentation.fragment
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS
 import android.view.*
 import androidx.core.view.MenuProvider
 import androidx.core.view.isVisible
@@ -14,7 +11,6 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
-import id.andiwijaya.story.BuildConfig
 import id.andiwijaya.story.R
 import id.andiwijaya.story.core.Constants.ZERO
 import id.andiwijaya.story.core.PermissionsListener
@@ -101,18 +97,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                             }
 
                             override fun onPermissionsDenied() {
-                                showConfirmationDialog(
-                                    getString(R.string.ask_permission_title),
-                                    getString(R.string.ask_permission_description),
-                                    getString(R.string.ask_permission_primary_button)
-                                ) {
-                                    startActivity(
-                                        Intent(
-                                            ACTION_APPLICATION_DETAILS_SETTINGS,
-                                            Uri.parse("package:${BuildConfig.APPLICATION_ID}")
-                                        )
-                                    )
-                                }
+                                showPermissionDeniedDialog()
                             }
                         })
                     }

@@ -26,7 +26,6 @@
                 android:id="@+id/sw_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/add_new_story_switch_margin_top"
                 android:layout_marginEnd="@dimen/add_new_story_switch_margin_end"
                 android:contentDescription="@string/location"
                 android:thumb="@drawable/custom_thumb"

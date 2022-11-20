@@ -8,6 +8,8 @@
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:name=".StoryApplication"
@@ -31,6 +33,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <meta-data
+                android:name="com.google.android.geo.API_KEY"
+                android:value="AIzaSyBxPhmRtczM-IhVQYHbJYRYSlFPy09htRE" />
 
             <meta-data
                 android:name="android.app.lib_name"
