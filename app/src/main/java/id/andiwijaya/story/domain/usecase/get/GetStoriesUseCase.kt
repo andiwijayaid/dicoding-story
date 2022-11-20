@@ -5,4 +5,6 @@ import javax.inject.Inject
 
 class GetStoriesUseCase @Inject constructor(private val repository: StoryRepository) {
     operator fun invoke() = repository.getStories()
+
+    fun invokeCache() = repository.getStoriesWithLocation()
 }

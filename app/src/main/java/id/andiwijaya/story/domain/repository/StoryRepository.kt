@@ -1,5 +1,6 @@
 package id.andiwijaya.story.domain.repository
 
+import androidx.lifecycle.LiveData
 import androidx.paging.PagingData
 import id.andiwijaya.story.core.Result
 import id.andiwijaya.story.data.remote.dto.request.LoginRequest
@@ -16,6 +17,7 @@ interface StoryRepository {
     fun login(request: LoginRequest): Flow<Result<LoginResult>>
     fun register(request: RegisterRequest): Flow<Result<RegisterResult>>
     fun getStories(): Flow<PagingData<Story>>
+    fun getStoriesWithLocation(): LiveData<List<Story>>
     fun postStory(
         photo: MultipartBody.Part, description: RequestBody, lat: RequestBody?, lon: RequestBody?
     ): Flow<Result<GenericResult>>

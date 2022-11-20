@@ -80,6 +80,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 when (menuItem.itemId) {
+                    R.id.map -> goTo(HomeFragmentDirections.actionToMap())
                     R.id.logout -> {
                         showConfirmationDialog(
                             getString(R.string.logout),

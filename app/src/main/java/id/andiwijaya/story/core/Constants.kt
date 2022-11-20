@@ -25,6 +25,7 @@ object Constants {
 
     const val ZERO = 0
     const val ZERO_LONG = 0L
+    const val ZERO_DOUBLE = 0.0
     const val ONE = 1
     const val FIVE = 5
     const val EMPTY_STRING = ""
@@ -38,5 +39,6 @@ object Constants {
     const val SECONDS_IN_MINUTE = 60
     const val MINUTES_IN_HOUR = 60
     const val HOURS_IN_A_DAY = 24
+    const val CAMERA_LAT_LNG_BOUNDS_PADDING = 300
 
 }

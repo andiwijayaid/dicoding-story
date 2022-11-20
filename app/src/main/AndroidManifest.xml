@@ -23,6 +23,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Story"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBxPhmRtczM-IhVQYHbJYRYSlFPy09htRE" />
+
         <activity
             android:name=".presentation.MainActivity"
             android:exported="true"
@@ -34,13 +39,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <meta-data
-                android:name="com.google.android.geo.API_KEY"
-                android:value="AIzaSyBxPhmRtczM-IhVQYHbJYRYSlFPy09htRE" />
-
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
         </activity>
 
         <provider

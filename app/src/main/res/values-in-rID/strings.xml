@@ -33,4 +33,5 @@
     <string name="reload">Muat Ulang</string>
     <string name="image">gambar</string>
     <string name="location">Lokasi</string>
+    <string name="map">Peta</string>
 </resources>

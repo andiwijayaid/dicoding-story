@@ -42,4 +42,5 @@
     <string name="reload">Reload</string>
     <string name="image">image</string>
     <string name="location">Location</string>
+    <string name="map">Map</string>
 </resources>

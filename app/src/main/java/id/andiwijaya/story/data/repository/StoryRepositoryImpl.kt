@@ -1,5 +1,6 @@
 package id.andiwijaya.story.data.repository
 
+import androidx.lifecycle.LiveData
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -18,6 +19,7 @@ import id.andiwijaya.story.data.resultFlow
 import id.andiwijaya.story.data.util.ConverterDataUtils.mapToDomain
 import id.andiwijaya.story.domain.model.LoginResult
 import id.andiwijaya.story.domain.model.RegisterResult
+import id.andiwijaya.story.domain.model.Story
 import id.andiwijaya.story.domain.repository.StoryRepository
 import kotlinx.coroutines.flow.Flow
 import okhttp3.MultipartBody
@@ -47,6 +49,10 @@ class StoryRepositoryImpl @Inject constructor(
         remoteMediator = StoryRemoteMediator(storyDatabase, remoteDataSource),
         pagingSourceFactory = { storyDatabase.storyDao().getAllStory() }
     ).flow
+
+    override fun getStoriesWithLocation(): LiveData<List<Story>> {
+        return storyDatabase.storyDao().getStoriesWithLocation()
+    }
 
     override fun postStory(
         photo: MultipartBody.Part,
