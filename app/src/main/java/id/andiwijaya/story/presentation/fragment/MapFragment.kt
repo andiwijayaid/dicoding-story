@@ -46,6 +46,7 @@ class MapFragment : BaseFragment<FragmentMapBinding>(), OnMapReadyCallback {
     }
 
     private fun addManyMarker() = with(viewModel) {
+        geStories()
         stories.observe(viewLifecycleOwner) {
             it.forEach { story ->
                 LatLng(story.lat ?: ZERO_DOUBLE, story.lon ?: ZERO_DOUBLE).apply {
