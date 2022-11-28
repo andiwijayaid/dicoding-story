@@ -42,13 +42,18 @@ class MapFragment : BaseFragment<FragmentMapBinding>(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+        with(mMap.uiSettings) {
+            isZoomControlsEnabled = true
+            isIndoorLevelPickerEnabled = true
+            isCompassEnabled = true
+            isMapToolbarEnabled = true
+        }
         addManyMarker()
     }
 
     private fun addManyMarker() = with(viewModel) {
-        geStories()
-        stories.observe(viewLifecycleOwner) {
-            it.forEach { story ->
+        getStories().observe(viewLifecycleOwner) {
+            it?.forEach { story ->
                 LatLng(story.lat ?: ZERO_DOUBLE, story.lon ?: ZERO_DOUBLE).apply {
                     mMap.addMarker(MarkerOptions().position(this))
                     boundsBuilder.include(this)
