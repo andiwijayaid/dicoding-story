@@ -31,3 +31,6 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+# Testing Scenario Notes
+skenario-pengujian.txt
