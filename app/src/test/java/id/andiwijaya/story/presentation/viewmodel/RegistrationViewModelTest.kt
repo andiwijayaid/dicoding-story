@@ -76,7 +76,7 @@ class RegistrationViewModelTest {
     }
 
     @Test
-    fun `isAllFilled return false if there is no empty string`() {
+    fun `isAllFilled return true if there is no empty string`() {
         registrationViewModel.name = faker.name.name()
         registrationViewModel.email = faker.internet.email()
         registrationViewModel.password = faker.lorem.words()

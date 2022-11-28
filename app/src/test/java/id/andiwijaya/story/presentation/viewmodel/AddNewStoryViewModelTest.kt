@@ -42,8 +42,7 @@ class AddNewStoryViewModelTest {
                 "".toRequestBody(),
                 "".toRequestBody()
             )
-        )
-            .thenReturn(flowOf(expectedResponse))
+        ).thenReturn(flowOf(expectedResponse))
 
         addNewStoryViewModel.postStory()
         addNewStoryViewModel.genericResult.value?.let {

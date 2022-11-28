@@ -74,13 +74,13 @@ class LoginViewModelTest {
     }
 
     @Test
-    fun `isAllFilled return false when email is empty string`() {
+    fun `isAllFilled return false when password is empty string`() {
         loginViewModel.email = faker.internet.email()
         assertThat(loginViewModel.isAllFilled()).isFalse()
     }
 
     @Test
-    fun `isAllFilled return false when password is empty string`() {
+    fun `isAllFilled return false when email is empty string`() {
         loginViewModel.password = faker.lorem.words()
         assertThat(loginViewModel.isAllFilled()).isFalse()
     }
