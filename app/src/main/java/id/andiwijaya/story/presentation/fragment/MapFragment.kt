@@ -55,7 +55,11 @@ class MapFragment : BaseFragment<FragmentMapBinding>(), OnMapReadyCallback {
         getStories().observe(viewLifecycleOwner) {
             it?.forEach { story ->
                 LatLng(story.lat ?: ZERO_DOUBLE, story.lon ?: ZERO_DOUBLE).apply {
-                    mMap.addMarker(MarkerOptions().position(this))
+                    mMap.addMarker(
+                        MarkerOptions().position(this)
+                            .title(story.name)
+                            .snippet(story.description)
+                    )
                     boundsBuilder.include(this)
                 }
                 mMap.animateCamera(
