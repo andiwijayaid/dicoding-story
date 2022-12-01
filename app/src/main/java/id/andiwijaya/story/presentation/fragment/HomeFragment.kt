@@ -37,12 +37,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
         FragmentHomeBinding.inflate(inflater, container, false)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel.getStories()
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
+        viewModel.getStories()
         rvStory.apply {
             postponeEnterTransition()
             viewTreeObserver.addOnPreDrawListener {
